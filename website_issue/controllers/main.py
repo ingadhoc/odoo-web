@@ -54,7 +54,8 @@ class contactus(http.Controller):
         _BLACKLIST = ['id', 'create_uid', 'create_date', 'write_uid',
                       'write_date', 'user_id', 'active']  # Allow in description
         # Could be improved including required from model
-        _REQUIRED = ['name', 'contact_name', 'email_from', 'description']
+        _REQUIRED = ['name', 'email_from', 'description']
+        # _REQUIRED = ['name', 'contact_name', 'email_from', 'description']
 
         # List of file to add to ir_attachment once we have the ID
         post_file = []
