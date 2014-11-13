@@ -10,9 +10,11 @@
     A new URL is provided "http://domain/login_serial/" to login with the specified Serial Id.''',
     'author': 'Damian Soriano <ds@ingadhoc.com>',
     'depends': ['website'],
-    'external_dependencies': {
+    'external_dependencies':
+    {
     },
-    'data': [
+    'data':
+    [
         'views/res_users_view.xml',
         'views/webclient_templates.xml',
     ],
