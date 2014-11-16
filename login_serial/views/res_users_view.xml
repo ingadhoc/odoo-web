@@ -11,7 +11,7 @@
                 <field name="company_id" position="before">
                     <label for="serial_id" class="oe_edit_only" string="Serial Id"/>
                     <field name="serial_id"/>
-                    <button name="generate_fresh_serial_ids" string="Generate new Serial Id" type="object"/>
+                    <button name="generate_fresh_serial_id" string="Generate new Serial Id" type="object"/>
                 </field>
             </data>
             </field>

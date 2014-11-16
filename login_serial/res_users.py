@@ -76,6 +76,6 @@ class res_users(Model):
         return super(res_users, self).write(vals)
 
     @api.multi
-    def generate_fresh_serial_ids(self):
+    def generate_fresh_serial_id(self):
         for record in self:
             record.serial_id = record._get_fresh_serial_id()
