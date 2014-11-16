@@ -1,9 +1,9 @@
-import logging
 import random
 
 from openerp import SUPERUSER_ID
 from openerp.addons.product.product import check_ean, sanitize_ean13
-from openerp.osv import fields, osv
+from openerp import api, exceptions, fields,  _
+from openerp.models import Model
 
 
 MAX_RETRY_FOR_GENERATE_SERIAL_ID = 10000
@@ -16,18 +16,17 @@ def generate_serial_id():
     return sanitize_ean13(serial_id)
 
 
-class res_users(osv.osv):
+class res_users(Model):
     _name = 'res.users'
     _inherit = 'res.users'
-    _columns = {
-        'serial_id': fields.char('Serial Id')
-    }
+
+    serial_id = fields.Char(string=_('Serial Id'), readonly=True)
 
     _sql_constraints = [
         (
             'serial_id_unique',
             'unique(serial_id)',
-            'There is another user with this Serial Id.'
+            _('There is another user with this Serial Id.')
         )
     ]
 
@@ -39,45 +38,44 @@ class res_users(osv.osv):
             return res
         super(res_users, self).check_credentials(cr, uid, password)
 
+    @api.multi
     def _validate_serial_id(self, vals):
         if 'serial_id' in vals and not check_ean(vals['serial_id']):
-            raise osv.except_osv(
-                'Serial Id invalid format',
-                'The Serial Id field has not the EAN-13 format standard.'
+            raise exceptions.Warning(
+                _('Serial Id invalid format'),
+                _('The Serial Id field has not the EAN-13 format standard.')
             )
 
-    def _get_fresh_serial_id(self, cr, uid, context=None):
+    @api.model
+    def _get_fresh_serial_id(self):
         for _ in range(MAX_RETRY_FOR_GENERATE_SERIAL_ID):
             serial_id = generate_serial_id()
-            if not self.search(
-                cr, uid, [('serial_id', '=', serial_id)], context=context
-            ):
+            if not self.search([('serial_id', '=', serial_id)]):
                 return serial_id
-        raise osv.except_osv(
-            'Cannot generate Serial Id',
-            'Odoo was unable to generate a fresh random Serial Id.' +
-            ' It may be that there are a big amount of Serial Id' +
-            ' already generated. You can try again.'
+        raise exceptions.Warning(
+            _('Cannot generate Serial Id'),
+            _(
+                'Odoo was unable to generate a fresh random Serial Id.' +
+                ' It may be that there are a big amount of Serial Id' +
+                ' already generated. You can try again.'
+            )
         )
 
-    def create(self, cr, uid, vals, context=None):
+    @api.model
+    def create(self, vals):
         if 'serial_id' in vals:
             self._validate_serial_id(vals)
         else:
-            vals['serial_id'] = self._get_fresh_serial_id(
-                cr, uid, context=context
-            )
-        return super(res_users, self).create(cr, uid, vals, context=context)
+            serial_id = self._get_fresh_serial_id()
+            vals['serial_id'] = serial_id
+        return super(res_users, self).create(vals)
 
-    def write(self, cr, uid, ids, vals, context=None):
+    @api.multi
+    def write(self, vals):
         self._validate_serial_id(vals)
-        return super(res_users, self).write(
-            cr, uid, ids, vals, context=context
-        )
+        return super(res_users, self).write(vals)
 
-    def generate_fresh_serial_ids(self, cr, uid, ids, context=None):
-        for id in ids:
-            serial_id = self._get_fresh_serial_id(cr, uid, context=context)
-            self.write(
-                cr, uid, id, {'serial_id': serial_id}, context=context
-            )
+    @api.multi
+    def generate_fresh_serial_ids(self):
+        for record in self:
+            record.serial_id = record._get_fresh_serial_id()

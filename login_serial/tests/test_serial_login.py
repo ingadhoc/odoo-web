@@ -1,13 +1,10 @@
 from datetime import datetime
-import logging
+import time
 
+from openerp import exceptions
 from openerp.addons.product.product import check_ean
-from openerp.osv import fields, osv
 from openerp.addons.login_serial.res_users import generate_serial_id
 from openerp.tests.common import TransactionCase
-
-
-log = logging.getLogger(__name__)
 
 
 class TestSerialLogin(TransactionCase):
@@ -55,13 +52,13 @@ class TestSerialLogin(TransactionCase):
         invalid_serial_id = '5012345678901'
         serial_id = '5012345678900'
 
-        with self.assertRaises(osv.except_osv):
+        with self.assertRaises(exceptions.Warning):
             self.create_user(
                 name=name, login=name, serial_id=invalid_serial_id
             )
 
         user_id = self.create_user(name=name, login=name, serial_id=serial_id)
-        with self.assertRaises(osv.except_osv):
+        with self.assertRaises(exceptions.Warning):
             self.user_pool.write(
                 self.cr, self.uid, user_id, {'serial_id': invalid_serial_id}
             )
@@ -90,6 +87,7 @@ class TestSerialLogin(TransactionCase):
         name_1 = self.get_new_user_name()
         user_id_1 = self.create_user(name=name_1, login=name_1)
 
+        time.sleep(1)
         name_2 = self.get_new_user_name()
         user_id_2 = self.create_user(name=name_2, login=name_2)
 
