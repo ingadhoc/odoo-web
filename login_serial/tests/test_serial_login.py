@@ -1,5 +1,4 @@
 from datetime import datetime
-import time
 
 from openerp import exceptions
 from openerp.addons.product.product import check_ean
@@ -11,7 +10,6 @@ class TestSerialLogin(TransactionCase):
 
     def setUp(self):
         super(TestSerialLogin, self).setUp()
-        self.user_pool = self.registry('res.users')
         self.user_model = self.env['res.users']
 
     def create_user(self, **vals):
@@ -38,7 +36,6 @@ class TestSerialLogin(TransactionCase):
     def test_serial_id_is_unique_on_write(self):
         name_1 = self.get_new_user_name()
         user_1 = self.create_user(name=name_1, login=name_1)
-
         name_2 = self.get_new_user_name()
         user_2 = self.create_user(name=name_2, login=name_2)
         with self.assertRaises(Exception):
@@ -47,7 +44,6 @@ class TestSerialLogin(TransactionCase):
     def test_serial_id_should_be_valid_ean13(self):
         name = self.get_new_user_name()
         invalid_serial_id = '5012345678901'
-
         with self.assertRaises(exceptions.Warning):
             self.create_user(
                 name=name, login=name, serial_id=invalid_serial_id
@@ -79,8 +75,6 @@ class TestSerialLogin(TransactionCase):
     def test_generate_fresh_serial_id(self):
         name_1 = self.get_new_user_name()
         user_1 = self.create_user(name=name_1, login=name_1)
-
-        time.sleep(1)
         name_2 = self.get_new_user_name()
         user_2 = self.create_user(name=name_2, login=name_2)
 

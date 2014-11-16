@@ -30,13 +30,14 @@ class res_users(Model):
         )
     ]
 
-    def check_credentials(self, cr, uid, password):
-        res = self.search(
-            cr, SUPERUSER_ID,
-            [('id', '=', uid), ('serial_id', '=', password)])
-        if res:
-            return res
-        super(res_users, self).check_credentials(cr, uid, password)
+    @api.model
+    def check_credentials(self, password):
+        users = self.sudo().search(
+            [('id', '=', self.env.uid), ('serial_id', '=', password)]
+        )
+        if users:
+            return users
+        super(res_users, self).check_credentials(password)
 
     @api.multi
     def _validate_serial_id(self, vals):
