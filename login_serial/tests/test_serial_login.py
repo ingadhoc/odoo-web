@@ -23,7 +23,6 @@ class TestSerialLogin(TransactionCase):
     def test_check_credentials_using_serial_id(self):
         name = self.get_new_user_name()
         user = self.create_user(name=name, login=name)
-        self.cr.commit()
         user_id = user.sudo(user.id).check_credentials(user.serial_id)
         self.assertTrue(user_id)
 
