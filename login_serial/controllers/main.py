@@ -6,8 +6,9 @@ import werkzeug.utils
 import werkzeug.wrappers
 
 import openerp
-from openerp import http
+from openerp import http, exceptions
 from openerp.http import request
+from openerp.tools.translate import _
 
 _logger = logging.getLogger(__name__)
 
@@ -75,15 +76,15 @@ class Home(http.Controller):
                 [('serial_id', '=', serial_id)],
                 ['id', 'login']
             )
-
-            login = user_vals[0]['login']
-            password = serial_id
-            uid = request.session.authenticate(
-                request.session.db, login, password
-            )
-            if uid is not False:
-                return http.redirect_with_hash(redirect)
+            if user_vals:
+                login = user_vals[0]['login']
+                password = serial_id
+                uid = request.session.authenticate(
+                    request.session.db, login, password
+                )
+                if uid is not False:
+                    return http.redirect_with_hash(redirect)
             request.uid = old_uid
-            values['error'] = "Wrong login/password"
+            values['error'] = _('Wrong Serial Id')
 
         return request.render('login_serial.login', values)
