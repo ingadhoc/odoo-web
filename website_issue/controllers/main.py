@@ -55,6 +55,7 @@ class contactus(http.Controller):
                       'write_date', 'user_id', 'active']  # Allow in description
         # Could be improved including required from model
         _REQUIRED = ['name', 'email_from', 'description']
+        # TODO: esto no funciono, hay que mejorarlo
         # _REQUIRED = ['name', 'contact_name', 'email_from', 'description']
 
         # List of file to add to ir_attachment once we have the ID

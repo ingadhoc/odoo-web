@@ -1,6 +1,6 @@
-openerp.web_group_expand = function(openerp) {
-    var QWeb = openerp.web.qweb;
-    openerp.web.ViewManager.include({
+openerp.web_group_expand = function(instance) {
+    var _t = instance.web._t, QWeb = instance.web.qweb;
+    instance.web.ViewManager.include({
         switch_mode: function(view_type, no_store, view_options) {
             if (view_type != 'list' && view_type != 'tree' ) {
                 this.$el.find("ul#oe_group_by").remove();
