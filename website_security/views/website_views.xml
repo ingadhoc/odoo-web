@@ -23,13 +23,13 @@
         <menuitem action="website_action_ui_view" id="menu_website_view" parent="website_security.website_sub_menu" sequence="20"/>
 
         <!-- Website menu menu -->
-        <menuitem id="website_menu_menu" action="action_website_menu" parent="website_security.website_sub_menu" sequence="10"/>
-
         <record id="action_website_menu" model="ir.actions.act_window">
             <field name="name">Website Menu</field>
             <field name="res_model">website.menu</field>
             <field name="view_mode">list,form</field>
         </record>
+
+        <menuitem id="website_menu_menu" action="action_website_menu" parent="website_security.website_sub_menu" sequence="10"/>
 
         <record id="menu_tree" model="ir.ui.view">
             <field name="name">website.menu.tree</field>
