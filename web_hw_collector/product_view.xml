@@ -8,7 +8,7 @@
             <field name="arch" type="xml">
             <data>
                 <field name="type" position="after">
-                    <field name="measured_weight"/>
+                    <field name="measured_weight" widget="hw_collector"/>
                 </field>
             </data>
             </field>

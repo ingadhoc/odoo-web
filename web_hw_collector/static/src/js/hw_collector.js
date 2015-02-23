@@ -1,14 +1,11 @@
-openerp.web_hw_collector = function(instance, local) {
-    var _t = instance.web._t,
-        _lt = instance.web._lt;
-    var QWeb = instance.web.qweb;
+openerp.web_hw_collector = function(instance) {
+    instance.web_hw_collector.HwCollector = instance.web.form.FieldChar.extend({
+        template: "HwCollector",
+        start: function() {
+            this.$el.append("<div>Hello dear Odoo user!</div>");
+        },
+    });
 
-    local.HwCollector = instance.Widget.extend(
-        {
-            start: function() {
-                console.log("Hw Collector initialized");
-            },
-        }
-    );
+    instance.web.form.widgets.add("hw_collector", "instance.web_hw_collector.HwCollector");
 }
 

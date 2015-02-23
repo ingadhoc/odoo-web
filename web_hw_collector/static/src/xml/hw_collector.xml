@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="HwCollector">
+        <div class="oe_linkedin_entity">
+            CACA
+        </div>
+    </t>
+</templates>
