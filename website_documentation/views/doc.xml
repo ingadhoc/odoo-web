@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <!-- Documentation main mennu -->
+        <menuitem id="menu_documentation"
+            parent="knowledge.menu_document" groups="base.group_user"
+            name="Documentation " sequence="20"/>
+
+        <!-- DOCUMENTATION TOC VIEWS -->
+        <record id="view_documentation_toc_list" model="ir.ui.view">
+            <field name="name">website.documentation.toc.list</field>
+            <field name="model">website.documentation.toc</field>
+            <field name="arch" type="xml">
+                <tree string="Documentation TOC">
+                    <field name="sequence" widget="handle"/>
+                    <field name="name"/>
+                    <field name="parent_id"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_documentation_toc_form" model="ir.ui.view">
+            <field name="name">website.documentation.toc.form</field>
+            <field name="model">website.documentation.toc</field>
+            <field name="arch" type="xml">
+                <form string="Documentation TOC">
+                    <group>
+                        <field name="name"/>
+                        <field name="parent_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Introduction">
+                            <field name="introduction"/>
+                        </page>
+                        <page string="Pages">
+                            <field name="page_ids" widget="many2many"/>
+                        </page>
+                        <page string="Childs">
+                            <field name="child_ids"/>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+        <record id="action_documentation_toc" model="ir.actions.act_window">
+            <field name="name">Documentation</field>
+            <field name="res_model">website.documentation.toc</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_documentation_toc"
+            parent="menu_documentation"
+            name="Documentation ToC" action="action_documentation_toc" sequence="20"/>
+
+        <record id="action_page_doc_page" model="ir.actions.act_window">
+            <field name="name">Documentation Page</field>
+            <field name="res_model">ir.ui.view</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <!-- TODO agregar documentation_toc_id a la vista search  y agregar los defaults-->
+            <field name="context">{'search_default_documentation_toc_id': False, 'default_page': True, 'default_type': 'qweb'}</field>
+            <field name="domain">[('page','=', True),('type','=', 'qweb')]</field>
+        </record>
+        <menuitem id="menu_forum_doc_pages"
+            parent="menu_documentation" name="Documentation Page"
+            action="action_page_doc_page" sequence="25"/>
+<!-- TODO cambiar esta visaa a ir.ui.vie y agregar a la search del defualt_doc_typ -->
+<!--         <record id="view_forum_post_doc_form" model="ir.ui.view">
+            <field name="name">forum.post.form.doc</field>
+            <field name="model">forum.post</field>
+            <field name="inherit_id" ref="website_forum.view_forum_post_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='parent_id']" position="after">
+                    <field name="documentation_toc_id"/>
+                </xpath>
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <field name="documentation_stage_id" widget="statusbar"/>
+                    </header>
+                </xpath>
+            </field>
+        </record> -->
+
+<!--         <record id="view_forum_post_doc_list" model="ir.ui.view">
+            <field name="name">forum.post.list.doc</field>
+            <field name="model">forum.post</field>
+            <field name="inherit_id" ref="website_forum.view_forum_post_list"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='forum_id']" position="after">
+                    <field name="documentation_toc_id"/>
+                </xpath>
+            </field>
+        </record> -->
+
+    </data>
+</openerp>
