@@ -28,8 +28,8 @@
                         <field name="parent_id"/>
                     </group>
                     <notebook>
-                        <page string="Pages">
-                            <field name="google_doc_ids" widget="many2many" domain="[('documentation_toc_id', '=', False)]"/>
+                        <page string="Google Docs">
+                            <field name="google_doc_ids" widget="many2many" domain="[('documentation_toc_id', '=', False)]" context="{'from_toc': True}"/>
                         </page>
                         <page string="Childs">
                             <field name="child_ids"/>
@@ -69,7 +69,7 @@
                     <group>
                         <field name="name"/>
                         <field name="doc_code"/>
-                        <field name="documentation_toc_id"/>
+                        <field name="documentation_toc_id" invisible="'from_toc' in context"/>
                     </group>
                 </form>
             </field>
