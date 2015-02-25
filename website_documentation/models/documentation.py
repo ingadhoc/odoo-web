@@ -39,10 +39,6 @@ class Documentation(models.Model):
         required=True,
         translate=True
         )
-    introduction = fields.Html(
-        'Introduction',
-        translate=True
-        )
     parent_id = fields.Many2one(
         'website.documentation.toc',
         'Parent Table Of Content',
@@ -61,60 +57,42 @@ class Documentation(models.Model):
         'Right Parent',
         select=True
         )
-    # post_ids = fields.One2many(
-    #     'website.post',
+    # page_ids = fields.One2many(
+    #     'ir.ui.view',
     #     'documentation_toc_id',
-    #     'Posts'
+    #     'Pages',
+    #     domain=[('page', '=', True), ('type', '=', 'qweb')],
+    #     context={'default_page': True, 'default_type': 'qweb'},
     #     )
-    page_ids = fields.One2many(
-        'ir.ui.view',
+    google_doc_ids = fields.One2many(
+        'website.documentation.google_doc',
         'documentation_toc_id',
-        'Pages',
-        domain=[('page', '=', True), ('type', '=', 'qweb')],
-        context={'default_page': True, 'default_type': 'qweb'},
+        'Google Docs',
         )
-    # forum_id = fields.Many2one(
-    #     'forum.forum',
-    #     'Forum',
-    #     required=True
-    #     )
 
     _constraints = [
-        (osv.osv._check_recursion, 'Error ! You cannot create recursive categories.', ['parent_id'])
+        (osv.osv._check_recursion,
+            'Error ! You cannot create recursive categories.', ['parent_id'])
     ]
 
 
-class Page(osv.Model):
-    _inherit = 'ir.ui.view'
+class Google_doc(models.Model):
+    _name = 'website.documentation.google_doc'
+    _description = 'website.documentation.google_doc'
+
+    name = fields.Char('Name', required=True)
+    doc_code = fields.Char('Document Code', required=True)
     documentation_toc_id = fields.Many2one(
         'website.documentation.toc',
         'Documentation ToC',
         ondelete='set null'
         )
-# TODO tal ves tengamos que extender a las pages
-# class Post(osv.Model):
-#     _inherit = 'forum.post'
 
-#     _columns = {
-#         'documentation_toc_id': fields.many2one('forum.documentation.toc', 'Documentation ToC', ondelete='set null'),
-#         'documentation_stage_id': fields.many2one('forum.documentation.stage', 'Documentation Stage'),
-#         'color': fields.integer('Color Index')
-#     }
 
-#     def _get_default_stage_id(self, cr, uid, context=None):
-#         stage_ids = self.pool["forum.documentation.stage"].search(cr, uid, [], limit=1, context=context)
-#         return stage_ids and stage_ids[0] or False
-
-#     _defaults = {
-#         'documentation_stage_id': _get_default_stage_id,
-#     }
-
-#     def _read_group_stage_ids(self, cr, uid, ids, domain, read_group_order=None, access_rights_uid=None, context=None):
-#         stage_obj = self.pool.get('forum.documentation.stage')
-#         stage_ids = stage_obj.search(cr, uid, [], context=context)
-#         result = stage_obj.name_get(cr, uid, stage_ids, context=context)
-#         return result, {}
-
-#     _group_by_full = {
-#         'documentation_stage_id': _read_group_stage_ids,
-#     }
+# class Page(models.Model):
+#     _inherit = 'ir.ui.view'
+#     documentation_toc_id = fields.Many2one(
+#         'website.documentation.toc',
+#         'Documentation ToC',
+#         ondelete='set null'
+#         )
