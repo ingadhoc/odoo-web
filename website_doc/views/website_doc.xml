@@ -5,7 +5,7 @@
         <!-- Front-end assets: custom css -->
         <template id="assets_frontend" inherit_id="website.assets_frontend" name="documentation">
             <xpath expr="." position="inside">
-                <link rel='stylesheet' href='/website_documentation/static/src/css/website_documentation.css'/>
+                <link rel='stylesheet' href='/website_doc/static/src/css/website_doc.css'/>
             </xpath>
         </template>
 
@@ -32,13 +32,13 @@
                 </ul>
 
                 <t t-set="titles" t-value="title.child_ids"/>
-                <t t-call="website_documentation.toc"/>
+                <t t-call="website_doc.toc"/>
             </t>
         </template>
 
         <template id="breadcrumb" name="Documentation Breadcrumb">
             <t t-if="toc.parent_id">
-                <t t-call="website_documentation.breadcrumb">
+                <t t-call="website_doc.breadcrumb">
                     <t t-set="toc" t-value="toc.parent_id"/>
                 </t>
             </t>
@@ -52,7 +52,7 @@
                 <section class="container mt16" t-if="toc">
                     <div class="row">
                         <ol class="breadcrumb mb0">
-                            <t t-call="website_documentation.breadcrumb">
+                            <t t-call="website_doc.breadcrumb">
                                 <t t-set="toc" t-value="toc.parent_id"/>
                             </t>
                             <li class="active">
@@ -67,7 +67,7 @@
                         <t t-esc="toc.name"/>
                     </h1>
                     <t t-set="titles" t-value="sections"/>
-                    <t t-call="website_documentation.toc"/>
+                    <t t-call="website_doc.toc"/>
                 </section>
                 <div class="oe_structure"/>
             </t>
@@ -78,7 +78,7 @@
                 <section class="container mt16" t-if="toc">
                     <div class="row">
                         <ol class="breadcrumb mb0">
-                            <t t-call="website_documentation.breadcrumb">
+                            <t t-call="website_doc.breadcrumb">
                                 <t t-set="toc" t-value="toc.parent_id"/>
                             </t>
                             <li>

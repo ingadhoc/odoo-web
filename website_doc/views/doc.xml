@@ -8,8 +8,8 @@
 
         <!-- DOCUMENTATION TOC VIEWS -->
         <record id="view_documentation_toc_list" model="ir.ui.view">
-            <field name="name">website.documentation.toc.list</field>
-            <field name="model">website.documentation.toc</field>
+            <field name="name">website.doc.toc.list</field>
+            <field name="model">website.doc.toc</field>
             <field name="arch" type="xml">
                 <tree string="Documentation TOC">
                     <field name="sequence" widget="handle"/>
@@ -19,8 +19,8 @@
             </field>
         </record>
         <record id="view_documentation_toc_form" model="ir.ui.view">
-            <field name="name">website.documentation.toc.form</field>
-            <field name="model">website.documentation.toc</field>
+            <field name="name">website.doc.toc.form</field>
+            <field name="model">website.doc.toc</field>
             <field name="arch" type="xml">
                 <form string="Documentation TOC">
                     <group>
@@ -40,7 +40,7 @@
         </record>
         <record id="action_documentation_toc" model="ir.actions.act_window">
             <field name="name">Documentation</field>
-            <field name="res_model">website.documentation.toc</field>
+            <field name="res_model">website.doc.toc</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
@@ -51,8 +51,8 @@
 
         <!-- Google doc VIEWS -->
         <record id="view_documentation_google_doc_list" model="ir.ui.view">
-            <field name="name">website.documentation.google_doc.list</field>
-            <field name="model">website.documentation.google_doc</field>
+            <field name="name">website.doc.google_doc.list</field>
+            <field name="model">website.doc.google_doc</field>
             <field name="arch" type="xml">
                 <tree string="Google Doc">
                         <field name="name"/>
@@ -62,8 +62,8 @@
             </field>
         </record>
         <record id="view_documentation_google_docform" model="ir.ui.view">
-            <field name="name">website.documentation.google_doc.form</field>
-            <field name="model">website.documentation.google_doc</field>
+            <field name="name">website.doc.google_doc.form</field>
+            <field name="model">website.doc.google_doc</field>
             <field name="arch" type="xml">
                 <form string="Google Doc">
                     <group>
@@ -76,7 +76,7 @@
         </record>
         <record id="action_documentation_google_doc" model="ir.actions.act_window">
             <field name="name">Google Doc</field>
-            <field name="res_model">website.documentation.google_doc</field>
+            <field name="res_model">website.doc.google_doc</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>

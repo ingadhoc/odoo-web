@@ -5,7 +5,7 @@ from openerp.osv import osv
 
 
 class Documentation(models.Model):
-    _name = 'website.documentation.toc'
+    _name = 'website.doc.toc'
     _description = 'Documentation ToC'
     _inherit = ['website.seo.metadata']
     _order = "parent_left"
@@ -40,12 +40,12 @@ class Documentation(models.Model):
         translate=True
         )
     parent_id = fields.Many2one(
-        'website.documentation.toc',
+        'website.doc.toc',
         'Parent Table Of Content',
         ondelete='cascade'
         )
     child_ids = fields.One2many(
-        'website.documentation.toc',
+        'website.doc.toc',
         'parent_id',
         'Children Table Of Content'
         )
@@ -65,7 +65,7 @@ class Documentation(models.Model):
     #     context={'default_page': True, 'default_type': 'qweb'},
     #     )
     google_doc_ids = fields.One2many(
-        'website.documentation.google_doc',
+        'website.doc.google_doc',
         'documentation_toc_id',
         'Google Docs',
         )
@@ -77,13 +77,13 @@ class Documentation(models.Model):
 
 
 class Google_doc(models.Model):
-    _name = 'website.documentation.google_doc'
-    _description = 'website.documentation.google_doc'
+    _name = 'website.doc.google_doc'
+    _description = 'website.doc.google_doc'
 
     name = fields.Char('Name', required=True)
     doc_code = fields.Char('Document Code', required=True)
     documentation_toc_id = fields.Many2one(
-        'website.documentation.toc',
+        'website.doc.toc',
         'Documentation ToC',
         ondelete='set null'
         )
@@ -92,7 +92,7 @@ class Google_doc(models.Model):
 # class Page(models.Model):
 #     _inherit = 'ir.ui.view'
 #     documentation_toc_id = fields.Many2one(
-#         'website.documentation.toc',
+#         'website.doc.toc',
 #         'Documentation ToC',
 #         ondelete='set null'
 #         )
