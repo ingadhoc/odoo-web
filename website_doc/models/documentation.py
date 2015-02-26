@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from openerp import models, fields
-# TODO cambiar abajo y borrar
+from openerp import models, fields, api
 from openerp.osv import osv
 
 
@@ -57,42 +56,73 @@ class Documentation(models.Model):
         'Right Parent',
         select=True
         )
-    # page_ids = fields.One2many(
-    #     'ir.ui.view',
-    #     'documentation_toc_id',
-    #     'Pages',
-    #     domain=[('page', '=', True), ('type', '=', 'qweb')],
-    #     context={'default_page': True, 'default_type': 'qweb'},
-    #     )
-    google_doc_ids = fields.One2many(
-        'website.doc.google_doc',
-        'documentation_toc_id',
-        'Google Docs',
+    is_article = fields.Boolean(
+        'Is Article?'
         )
+    article_toc_id = fields.Many2one(
+        'website.doc.toc',
+        'Documentation ToC',
+        ondelete='set null'
+        )
+    article_ids = fields.One2many(
+        'website.doc.toc',
+        'article_toc_id',
+        'Google Docs',
+        domain=[('is_article', '=', True)],
+        context={'default_is_article': 1},
+        )
+    add_google_doc = fields.Boolean(
+        'Add Google Doc?',
+        help="Add Google Doc after Page Content?"
+        )
+    google_doc_link = fields.Char(
+        'Google Document Code',
+        )
+    google_doc_code = fields.Char(
+        'Google Document Code',
+        )
+    google_doc_height = fields.Char(
+        'Google Document Height',
+        default='1050px'
+        )
+    content = fields.Html(
+        'Content',
+        )
+    google_doc = fields.Text(
+        'Content',
+        compute='get_google_doc',
+        )
+
+    @api.one
+    @api.depends('google_doc_code', 'google_doc_height')
+    def get_google_doc(self):
+        google_doc = False
+        if self.google_doc_height and self.google_doc_code:
+            google_doc = google_doc_template % (
+                self.google_doc_height, self.google_doc_code)
+        self.google_doc = google_doc
 
     _constraints = [
         (osv.osv._check_recursion,
             'Error ! You cannot create recursive categories.', ['parent_id'])
     ]
 
+google_doc_template = """
+ <div class="row">
+    <iframe id="google-doc-iframe" srcdoc="" style="height: %s; margin: 0 auto; padding-left: 20px; padding-right: 20px" align="middle" frameborder="0" width="100%%" height="300" scrolling="no">
+    </iframe>
 
-class Google_doc(models.Model):
-    _name = 'website.doc.google_doc'
-    _description = 'website.doc.google_doc'
-
-    name = fields.Char('Name', required=True)
-    doc_code = fields.Char('Document Code', required=True)
-    documentation_toc_id = fields.Many2one(
-        'website.doc.toc',
-        'Documentation ToC',
-        ondelete='set null'
-        )
-
-
-# class Page(models.Model):
-#     _inherit = 'ir.ui.view'
-#     documentation_toc_id = fields.Many2one(
-#         'website.doc.toc',
-#         'Documentation ToC',
-#         ondelete='set null'
-#         )
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+    $(function() {
+        $.get("https://docs.google.com/document/d/%s/pub?", function(html) {
+            $("#google-doc-iframe").attr("srcdoc", html);
+            setTimeout(function() {
+                $("#google-doc-iframe").contents().find('a[href^="http://"]').attr("target", "_blank");
+                $("#google-doc-iframe").contents().find('a[href^="https://"]').attr("target", "_blank");
+            }, 1000);
+        });
+    });
+    </script>            
+</div>
+"""

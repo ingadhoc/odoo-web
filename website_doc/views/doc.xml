@@ -23,15 +23,28 @@
             <field name="model">website.doc.toc</field>
             <field name="arch" type="xml">
                 <form string="Documentation TOC">
+                    <header>
+                    </header>
+                    <field name="is_article" invisible="1"/>
                     <group>
                         <field name="name"/>
-                        <field name="parent_id"/>
+                        <field name="parent_id" attrs="{'invisible':[('is_article', '=', True)]}"/>
+                        <field name="add_google_doc" attrs="{'invisible':[('is_article', '=', False)]}"/>
+                    </group>
+                    <group attrs="{'invisible':[('add_google_doc', '=', False)]}">
+                        <field name="google_doc_code" attrs="{'required':[('add_google_doc', '=', True)]}"/>
+                        <field name="google_doc_height" attrs="{'required':[('add_google_doc', '=', True)]}"/>
+                        <field name="google_doc_link" widget="url"/>
                     </group>
                     <notebook>
-                        <page string="Google Docs">
-                            <field name="google_doc_ids" widget="many2many" domain="[('documentation_toc_id', '=', False)]" context="{'from_toc': True}"/>
+                        <page string="Articles" attrs="{'invisible':[('is_article', '=', True)]}">
+                            <field name="article_ids"/>
                         </page>
-                        <page string="Childs">
+                        <!-- We edit content on front end -->
+<!--                         <page string="Content" attrs="{'invisible':[('is_article', '!=', True)]}">
+                            <field name="content"/>
+                        </page> -->
+                        <page string="Childs" attrs="{'invisible':[('is_article', '=', True)]}">
                             <field name="child_ids"/>
                         </page>
                     </notebook>
@@ -39,92 +52,30 @@
             </field>
         </record>
         <record id="action_documentation_toc" model="ir.actions.act_window">
-            <field name="name">Documentation</field>
+            <field name="name">Documentation TOC</field>
             <field name="res_model">website.doc.toc</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
+            <field name="context">{'default_is_article':0}</field>
+            <field name="domain">[('is_article', '=', False)]</field>
         </record>
 
         <menuitem id="menu_documentation_toc"
             parent="menu_documentation"
-            name="Documentation ToC" action="action_documentation_toc" sequence="20"/>
+            name="Documentation ToC" action="action_documentation_toc" sequence="10"/>
 
-        <!-- Google doc VIEWS -->
-        <record id="view_documentation_google_doc_list" model="ir.ui.view">
-            <field name="name">website.doc.google_doc.list</field>
-            <field name="model">website.doc.google_doc</field>
-            <field name="arch" type="xml">
-                <tree string="Google Doc">
-                        <field name="name"/>
-                        <field name="doc_code"/>
-                        <field name="documentation_toc_id"/>
-                </tree>
-            </field>
-        </record>
-        <record id="view_documentation_google_docform" model="ir.ui.view">
-            <field name="name">website.doc.google_doc.form</field>
-            <field name="model">website.doc.google_doc</field>
-            <field name="arch" type="xml">
-                <form string="Google Doc">
-                    <group>
-                        <field name="name"/>
-                        <field name="doc_code"/>
-                        <field name="documentation_toc_id" invisible="'from_toc' in context"/>
-                    </group>
-                </form>
-            </field>
-        </record>
-        <record id="action_documentation_google_doc" model="ir.actions.act_window">
-            <field name="name">Google Doc</field>
-            <field name="res_model">website.doc.google_doc</field>
+        <record id="action_documentation_article" model="ir.actions.act_window">
+            <field name="name">Documentation Article</field>
+            <field name="res_model">website.doc.toc</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
+            <field name="context">{'default_is_article':1}</field>
+            <field name="domain">[('is_article', '=', True)]</field>
         </record>
 
-        <menuitem id="menu_documentation_google_doc"
+        <menuitem id="menu_documentation_article"
             parent="menu_documentation"
-            name="Google Doc" action="action_documentation_google_doc" sequence="22"/>
-
-        <!-- Pages -->
-        <record id="action_page_doc_page" model="ir.actions.act_window">
-            <field name="name">Documentation Page</field>
-            <field name="res_model">ir.ui.view</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
-            <!-- TODO agregar documentation_toc_id a la vista search  y agregar los defaults-->
-            <field name="context">{'search_default_documentation_toc_id': False, 'default_page': True, 'default_type': 'qweb'}</field>
-            <field name="domain">[('page','=', True),('type','=', 'qweb')]</field>
-        </record>
-        <menuitem id="menu_forum_doc_pages"
-            parent="menu_documentation" name="Documentation Page"
-            action="action_page_doc_page" sequence="25"/>
-<!-- TODO cambiar esta visaa a ir.ui.vie y agregar a la search del defualt_doc_typ -->
-<!--         <record id="view_forum_post_doc_form" model="ir.ui.view">
-            <field name="name">forum.post.form.doc</field>
-            <field name="model">forum.post</field>
-            <field name="inherit_id" ref="website_forum.view_forum_post_form"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='parent_id']" position="after">
-                    <field name="documentation_toc_id"/>
-                </xpath>
-                <xpath expr="//sheet" position="before">
-                    <header>
-                        <field name="documentation_stage_id" widget="statusbar"/>
-                    </header>
-                </xpath>
-            </field>
-        </record> -->
-
-<!--         <record id="view_forum_post_doc_list" model="ir.ui.view">
-            <field name="name">forum.post.list.doc</field>
-            <field name="model">forum.post</field>
-            <field name="inherit_id" ref="website_forum.view_forum_post_list"/>
-            <field name="arch" type="xml">
-                <xpath expr="//field[@name='forum_id']" position="after">
-                    <field name="documentation_toc_id"/>
-                </xpath>
-            </field>
-        </record> -->
+            name="Article" action="action_documentation_article" sequence="20"/>
 
     </data>
 </openerp>

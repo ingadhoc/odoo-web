@@ -21,15 +21,25 @@ class WebsiteDoc(http.Controller):
         }
         return request.website.render("website_doc.documentation", value)
 
-    @http.route(['''/doc/how-to/<model("website.doc.toc"):toc>/<model("website.doc.google_doc", "[('documentation_toc_id','=',toc[0])]"):google_doc>'''], type='http', auth="public", website=True)
-    def google_doc_render(self, toc, google_doc, **kwargs):
-        assert google_doc.documentation_toc_id.id == toc.id, "Wrong post!"
+    @http.route(['''/doc/how-to/<model("website.doc.toc"):toc>/<model("website.doc.toc", "[('article_toc_id','=',toc[0])]"):article>'''], type='http', auth="public", website=True)
+    def article_doc_render(self, toc, article, **kwargs):
+        assert article.article_toc_id.id == toc.id, "Wrong post!"
         value = {
             'toc': toc,
-            'google_doc': google_doc,
-            'main_object': google_doc,
+            'article': article,
+            'main_object': article,
         }
         return request.website.render("website_doc.documentation_post", value)
+    # funcionaba con los google docs
+    # @http.route(['''/doc/how-to/<model("website.doc.toc"):toc>/<model("website.doc.google_doc", "[('documentation_toc_id','=',toc[0])]"):google_doc>'''], type='http', auth="public", website=True)
+    # def google_doc_render(self, toc, google_doc, **kwargs):
+    #     assert google_doc.documentation_toc_id.id == toc.id, "Wrong post!"
+    #     value = {
+    #         'toc': toc,
+    #         'google_doc': google_doc,
+    #         'main_object': google_doc,
+    #     }
+    #     return request.website.render("website_doc.documentation_post", value)
 
     # Este es el que funciona
     # @http.route(['''/doc/how-to/<model("website.doc.toc"):toc>/<model("ir.ui.view", "[('documentation_toc_id','=',toc[0])]"):post>'''], type='http', auth="public", website=True)

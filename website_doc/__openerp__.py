@@ -10,7 +10,8 @@ To create a page you can type: http://localhost:9069/page/asda
         """,
     'author': 'ADHOC SA',
     'depends': [
-        'website'
+        'website',
+        'knowledge',
     ],
     'data': [
         'data/doc_data.xml',
@@ -20,5 +21,9 @@ To create a page you can type: http://localhost:9069/page/asda
     ],
     'demo': [
     ],
+    'qweb': [
+        'static/src/xml/website_doc.xml'
+    ],
     'installable': True,
+    'application': True,
 }
