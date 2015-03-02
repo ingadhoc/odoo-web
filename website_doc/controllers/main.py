@@ -5,14 +5,15 @@ from openerp.addons.website.models.website import slug
 
 
 class WebsiteDoc(http.Controller):
-    @http.route(['/doc/how-to', '/doc/how-to/<model("website.doc.toc"):toc>'], type='http', auth="public", website=True)
+    @http.route(['/doc/how-to', '/doc/how-to/<model("website.doc.toc"):toc>'], type='http', auth="user", website=True)
     def toc(self, toc=None, **kwargs):
         cr, uid, context, toc_id = request.cr, request.uid, request.context, False
         if toc:
             sections = toc.child_ids
         else:
             toc_obj = request.registry['website.doc.toc']
-            obj_ids = toc_obj.search(cr, uid, [('parent_id', '=', False)], context=context)
+            obj_ids = toc_obj.search(cr, uid, [('parent_id', '=', False),
+                ('is_article', '=', False)], context=context)
             sections = toc_obj.browse(cr, uid, obj_ids, context=context)
         value = {
             'toc': toc,
@@ -21,7 +22,7 @@ class WebsiteDoc(http.Controller):
         }
         return request.website.render("website_doc.documentation", value)
 
-    @http.route(['''/doc/how-to/<model("website.doc.toc"):toc>/<model("website.doc.toc", "[('article_toc_id','=',toc[0])]"):article>'''], type='http', auth="public", website=True)
+    @http.route(['''/doc/how-to/<model("website.doc.toc"):toc>/<model("website.doc.toc", "[('article_toc_id','=',toc[0])]"):article>'''], type='http', auth="user", website=True)
     def article_doc_render(self, toc, article, **kwargs):
         assert article.article_toc_id.id == toc.id, "Wrong post!"
         value = {

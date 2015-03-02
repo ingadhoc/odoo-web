@@ -16,6 +16,7 @@ To create a page you can type: http://localhost:9069/page/asda
     'data': [
         'data/doc_data.xml',
         'security/ir.model.access.csv',
+        'security/security.xml',
         'views/doc.xml',
         'views/website_doc.xml',
     ],
