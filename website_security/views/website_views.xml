@@ -20,7 +20,7 @@
             <field name="domain">[('type', '=', 'qweb')]</field>
         </record>
 
-        <menuitem action="website_action_ui_view" id="menu_website_view" parent="website_security.website_sub_menu" sequence="20"/>
+        <menuitem action="website_action_ui_view" id="menu_website_view" groups="base.group_website_designer" parent="website_security.website_sub_menu" sequence="20"/>
 
         <!-- Website menu menu -->
         <record id="action_website_menu" model="ir.actions.act_window">
@@ -29,7 +29,7 @@
             <field name="view_mode">list,form</field>
         </record>
 
-        <menuitem id="website_menu_menu" action="action_website_menu" parent="website_security.website_sub_menu" sequence="10"/>
+        <menuitem id="website_menu_menu" action="action_website_menu" groups="base.group_website_designer" parent="website_security.website_sub_menu" sequence="10"/>
 
         <record id="menu_tree" model="ir.ui.view">
             <field name="name">website.menu.tree</field>
