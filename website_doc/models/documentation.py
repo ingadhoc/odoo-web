@@ -7,7 +7,7 @@ class Documentation(models.Model):
     _name = 'website.doc.toc'
     _description = 'Documentation ToC'
     _inherit = ['website.seo.metadata']
-    _order = "parent_left"
+    _order = "sequence, parent_left"
     _parent_order = "sequence, name"
     _parent_store = True
 
@@ -31,7 +31,8 @@ class Documentation(models.Model):
         return dict(res)
 
     sequence = fields.Integer(
-        'Sequence'
+        'Sequence',
+        default=10,
         )
     name = fields.Char(
         'Name',
@@ -41,7 +42,8 @@ class Documentation(models.Model):
     parent_id = fields.Many2one(
         'website.doc.toc',
         'Parent Table Of Content',
-        ondelete='cascade'
+        ondelete='set null',
+        domain=[('is_article', '=', False)],
         )
     child_ids = fields.One2many(
         'website.doc.toc',
@@ -92,6 +94,12 @@ class Documentation(models.Model):
         'Content',
         compute='get_google_doc',
         )
+    group_ids = fields.Many2many(
+        'res.groups',
+        'website_doc_toc_group_rel',
+        'website_toc_id', 'gid', 'Groups',
+        help="If you have groups, the visibility of this TOC will be based on these groups. "\
+            "If this field is empty, Odoo will compute visibility based on the related object's read access.")
 
     @api.one
     @api.depends('google_doc_code', 'google_doc_height')

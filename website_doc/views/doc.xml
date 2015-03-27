@@ -28,7 +28,9 @@
                     <field name="is_article" invisible="1"/>
                     <group>
                         <field name="name"/>
-                        <field name="parent_id" attrs="{'invisible':[('is_article', '=', True)]}"/>
+                        <field name="parent_id" invisible="'from_parent' in context" attrs="{'invisible':[('is_article', '=', True)]}"/>
+                        <field name="group_ids" widget="many2many_tags" attrs="{'invisible':[('is_article', '=', False)]}"/>
+                        <field name="article_toc_id" attrs="{'invisible':[('is_article', '=', False)]}" invisible="'from_toc' in context"/>
                         <field name="add_google_doc" attrs="{'invisible':[('is_article', '=', False)]}"/>
                     </group>
                     <group attrs="{'invisible':[('add_google_doc', '=', False)]}">
@@ -38,14 +40,14 @@
                     </group>
                     <notebook>
                         <page string="Articles" attrs="{'invisible':[('is_article', '=', True)]}">
-                            <field name="article_ids"/>
+                            <field name="article_ids" context="{'default_is_article': 1, 'from_toc': True}"/>
                         </page>
                         <!-- We edit content on front end -->
 <!--                         <page string="Content" attrs="{'invisible':[('is_article', '!=', True)]}">
                             <field name="content"/>
                         </page> -->
                         <page string="Childs" attrs="{'invisible':[('is_article', '=', True)]}">
-                            <field name="child_ids"/>
+                            <field name="child_ids" context="{'from_parent':True}" />
                         </page>
                     </notebook>
                 </form>
