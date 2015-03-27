@@ -42,6 +42,17 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="website.menu_search">
+            <field name="name">Search view for Website</field>
+            <field name="model">website.menu</field>
+            <field name="arch" type="xml">
+                <search string="Search website">
+                    <field name="parent_id"/>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+
         <record id="menu_form" model="ir.ui.view">
             <field name="name">website.menu.form</field>
             <field name="model">website.menu</field>
