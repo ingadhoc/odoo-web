@@ -2,6 +2,7 @@
 <openerp>
     <data>
 
+        <!-- Javascript para abrir documentacion -->
         <template id="assets_backend" name="website_doc assets" inherit_id="web.assets_backend">
             <xpath expr="." position="inside">
                <script type="text/javascript" src="/website_doc/static/src/js/website_doc.js"></script>
