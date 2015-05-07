@@ -2,16 +2,18 @@
     'name': 'Hardware Collector',
     'category': '',
     'version': '1.0',
-    'author': 'IngAdhoc',
+    'author': 'ADHOC SA',
+    'website': 'www.adhoc.com.ar',
     'description':
         '''
 Creates a Widget that will connect to a HW interface
+It can be added in any Float field on formview with: 'widget="hw_collector"'
+You need to add an ir parameter with key 'hw.proxy' and value url where to read.
         ''',
-    'depends': ['product', 'web'],
+    'depends': ['web'],
     'css': [],
     'data': [
         'views/web_hw_collector.xml',
-        'product_view.xml',
     ],
     'qweb': ['static/src/xml/*.xml'],
     'installable': True,
