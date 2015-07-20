@@ -1,9 +1,7 @@
-import random
-
-from openerp import SUPERUSER_ID
 from openerp.addons.product.product import check_ean, sanitize_ean13
 from openerp import api, exceptions, fields,  _
 from openerp.models import Model
+import random
 
 
 MAX_RETRY_FOR_GENERATE_SERIAL_ID = 10000
@@ -11,7 +9,7 @@ MAX_RETRY_FOR_GENERATE_SERIAL_ID = 10000
 
 def generate_serial_id():
     serial_id = ''
-    for _ in range(12):
+    for x in range(12):
         serial_id += str(int(random.random() * 10))
     return sanitize_ean13(serial_id)
 
@@ -49,7 +47,7 @@ class res_users(Model):
 
     @api.model
     def _get_fresh_serial_id(self):
-        for _ in range(MAX_RETRY_FOR_GENERATE_SERIAL_ID):
+        for x in range(MAX_RETRY_FOR_GENERATE_SERIAL_ID):
             serial_id = generate_serial_id()
             if not self.search([('serial_id', '=', serial_id)]):
                 return serial_id

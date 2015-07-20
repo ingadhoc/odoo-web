@@ -35,7 +35,7 @@ class TestSerialLogin(TransactionCase):
 
     def test_serial_id_is_unique_on_write(self):
         name_1 = self.get_new_user_name()
-        user_1 = self.create_user(name=name_1, login=name_1)
+        # user_1 = self.create_user(name=name_1, login=name_1)
         name_2 = self.get_new_user_name()
         user_2 = self.create_user(name=name_2, login=name_2)
         with self.assertRaises(Exception):
