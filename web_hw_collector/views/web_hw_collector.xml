@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <template id="web_hw_collector_assets_backend" name="web_hw_collector assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/web_hw_collector/static/src/js/hw_collector.js"></script>
+            </xpath>
+        </template>
+    </data>
+</openerp>
+
