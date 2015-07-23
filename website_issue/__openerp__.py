@@ -8,7 +8,8 @@
 Website Issue
 =============
         """,
-    'author': 'Ing ADHOC',
+    'author': 'ADHOC SA',
+    'website': 'www.adhoc.com.ar',
     'depends': [
         'website_partner',
         'project_issue',

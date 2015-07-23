@@ -9,7 +9,8 @@ password.
 
 A new URL is provided "http://domain/login_serial/" to login with the specified
 Serial Id.''',
-    'author': 'Damian Soriano <ds@ingadhoc.com>',
+    'author': 'ADHOC SA',
+    'website': 'www.adhoc.com.ar',
     'depends': ['website'],
     'external_dependencies':
     {
