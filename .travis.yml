@@ -18,6 +18,16 @@ env:
   - VERSION="8.0" TESTS="0" LINT_CHECK="0" TRANSIFEX="0"
   - TRANSIFEX_USER='jjscarafia'
   - TRANSIFEX_ORGANIZATION='adhoc'
+  - TRANSIFEX_TEAM='adhoc'
+  # The default project slug is owner-repo_name-version (with dash in the version string).
+  # The default organization is the owner of the repo.
+  # The default fill up resources (TM) is True.
+  # The default team is 23907. https://www.transifex.com/organization/oca/team/23907/
+  - TRANSIFEX_PROJECT_SLUG='adhoc-odoo-web-80'
+  # - TRANSIFEX_ORGANIZATION=
+  # - TRANSIFEX_FILL_UP_RESOURCES=
+  # - TRANSIFEX_TEAM=
+
   - secure: "KFf/jPNV+yp9bO1xzx5m3gtlXMbw2D7tH0Db0bT03CCm/VXjS+WlUTel5SoJjB9SV0jn5M4RWUjz/ei1xrc5q274DPFPvYiW4hSgVhbYpa2yRUpkL4B3WrQQbfms6aC+brypeiM7ojkjRpMLhqeh1/SQJB4TDmZvkFcNEa+5QzRchw8QDEHB5W3XHP5XPShabKhPifkTXdxxb/4XmgZwgmJ+yuStOtxGgqwXGmx0WXGS5/UufsPNEYwpyelLhClDg6t+m6yDvlxc5vQeesUb/89eelJKG80MyVrqlWTWd4+fGfaNlf++4wcN5T5mEUwyiiRu7GFop2esi4nio+pFaeDUG1uP0moY29LecHxIGCEIXuYpktFXvMFPzqrBqJxy1h8ftqFI/fkoU7D2rvnTYiVg3/xYi4SWsjzHuheTxBoCeptEpAWXXTIEn8rJctelIKtvE6UnBd7UEMMpkkiXlsnFy8qr4NCWvgRLHIDlXTp/M0PLR79rxi9BoccBS4U3zFRcsCDndbhesmRi0p8NbuXHQn76ti2eVInkO8HxJtmFAZD8dh9MCTdQYiN/iTZdIQo/fjo+GfwNCKOvG9EFzwKgLFq63wbnoINd6QNoq9F+DZqWZBsuOd2kc4W75NCG/ZCAkaKDg5WbWD3AE/VPf7IkbnozcwHD45DJ9u4yu7c="
 
   matrix:
