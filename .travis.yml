@@ -18,17 +18,9 @@ env:
   - VERSION="8.0" TESTS="0" LINT_CHECK="0" TRANSIFEX="0"
   - TRANSIFEX_USER='jjscarafia'
   - TRANSIFEX_ORGANIZATION='adhoc'
-  - TRANSIFEX_TEAM='adhoc'
-  # The default project slug is owner-repo_name-version (with dash in the version string).
-  # The default organization is the owner of the repo.
-  # The default fill up resources (TM) is True.
-  # The default team is 23907. https://www.transifex.com/organization/oca/team/23907/
-  - TRANSIFEX_PROJECT_SLUG='adhoc-odoo-web-80'
-  # - TRANSIFEX_ORGANIZATION=
-  # - TRANSIFEX_FILL_UP_RESOURCES=
-  # - TRANSIFEX_TEAM=
-
-  - secure: "KFf/jPNV+yp9bO1xzx5m3gtlXMbw2D7tH0Db0bT03CCm/VXjS+WlUTel5SoJjB9SV0jn5M4RWUjz/ei1xrc5q274DPFPvYiW4hSgVhbYpa2yRUpkL4B3WrQQbfms6aC+brypeiM7ojkjRpMLhqeh1/SQJB4TDmZvkFcNEa+5QzRchw8QDEHB5W3XHP5XPShabKhPifkTXdxxb/4XmgZwgmJ+yuStOtxGgqwXGmx0WXGS5/UufsPNEYwpyelLhClDg6t+m6yDvlxc5vQeesUb/89eelJKG80MyVrqlWTWd4+fGfaNlf++4wcN5T5mEUwyiiRu7GFop2esi4nio+pFaeDUG1uP0moY29LecHxIGCEIXuYpktFXvMFPzqrBqJxy1h8ftqFI/fkoU7D2rvnTYiVg3/xYi4SWsjzHuheTxBoCeptEpAWXXTIEn8rJctelIKtvE6UnBd7UEMMpkkiXlsnFy8qr4NCWvgRLHIDlXTp/M0PLR79rxi9BoccBS4U3zFRcsCDndbhesmRi0p8NbuXHQn76ti2eVInkO8HxJtmFAZD8dh9MCTdQYiN/iTZdIQo/fjo+GfwNCKOvG9EFzwKgLFq63wbnoINd6QNoq9F+DZqWZBsuOd2kc4W75NCG/ZCAkaKDg5WbWD3AE/VPf7IkbnozcwHD45DJ9u4yu7c="
+  # - TRANSIFEX_TEAM='adhoc'
+  # - TRANSIFEX_PROJECT_SLUG='adhoc-odoo-web-8-0'
+  - secure: "JC8lykStR/XWS/BIUiaVd2xVvcIqPncNrpaUG9HcoGXbmGsuL6wXhc3d4flNRGUgkum3GJ6kLY9YQ1xyo/psT9VawU3kOR12raftIuNvnFCBT3BVI306hf//sDMwPTf89scpq4TpE7DO4tTpqgIumtboaGmnvDvcn/wCcClYReXPldTzgtqdU1Q7pHMRymlUuNFibD43a1JQOGYGH3EXRrPM5hEfdLK4j9Vp+hSxz/14+chx4/Yakw6XGf2Z2fZBsNTphS3+JWZY0VZV5Tatr9iBuOPwkaYtqpPLBNsM9SYidXz1f4DiPBf1PlD5GtQ7iVbOI8HkNijxFR8C2iK3yvquXUhZmvfq859gsUZov6ssaLn+7O0PyCR17axa+dHK1agvqBaKCec9fGNdHWcP46Kh9Ofhanlk9y2ADqMIw6UHuAGNtt89li4ovPpfzhwRtYU3QS6EJbUlGRFT0zuyKTkv+uU3qazlBlGjEftGQpfbaKGbS9isyVTjZm1jmpt3/pKpwKxxWLZZzI4OYUcNpkyuEjo0uC3Mtyq3yeUkKyIsPlYWgdpyHTqrcK1+EBXVYGWBhWBnGRJN6wJxT/N+EM6C89BpLFc9Ymjf9QSehTLWeFSQvM579RC4MxUIhyAgQViWAmOeQVxWfbewvrVNT6eWl9rzUE6U3KJrmMnGciY="
 
   matrix:
   #- LINT_CHECK="0"
