@@ -14,9 +14,17 @@ python:
   - "2.7"
 
 env:
-  # - VERSION="8.0" LINT_CHECK="1"
-  - VERSION="8.0" ODOO_REPO="odoo/odoo" LINT_CHECK="0"
-  - VERSION="8.0" UNIT_TEST="1" LINT_CHECK="0"
+  global:
+  - VERSION="8.0" TESTS="0" LINT_CHECK="0" TRANSIFEX="0"
+  - TRANSIFEX_USER='admin@adhoc.com.ar'
+  - TRANSIFEX_ORGANIZATION='adhoc'
+  - secure: "kWqyRgBchP0I2T7dBd0R4PDOIvPo/UAxtabiNh7xlXusRxUEMdaZ5h8Qomzrna13/lAD+6gQLbk8Y5QBfh8asnA6weYaVC+EMKma4k9jCcVDWstcc5hkHOIkvFyH6dAuDQdAu1ERv/lnVyz9LSmOamvfxY/ohPXjoifzrhnxriZK+L9giuK7oZGVYhzOWWAyFC0QPCchzVVEvdBKfAt94g65WtqCCJxKn9KfcZlE43ux1UPmkK8dAsUipErKluG9W1C8nROf/4SvqcDrJ/HbHRJZd3S0Zkl7bn8kVeNnI/Ng+4e/QEMbLW6y2Bu4r1WZYZ+FDyHiUhg/QPhlsvrJ/2U29Uj1k6y51pEK+9sBJ9tzsCcaHEs7LvR8qrFuiXHrWY+AkSMagrw0FUPSBCHFT11S3Y+7nBuLrKoEbpC9e9GXJ7zhNNfmWw4CUj9+0A7KQ/J3WUxSoa/OaizmwMI6/d+A2aBzR8G1dNtw9C5Jpq9ho5FR7zqTjzGlQgoTGtM5KUy/T2Es2GC2ksXqriFUAp4ZCZiAdGc7sybFMPOwB4jGyTOjc1SQs7y+3uQ+SyKvIVTBl+lLIWizPI2gWPpxG+2RIztwdcDq1epqJpMUL0i+LEdSiE6obG/jZYr2TVNfjWS1sZJukTCPBpMbVSwytsNhMWNSG6Hu8x3zu4hPadk="
+
+  matrix:
+  #- LINT_CHECK="0"
+  - TRANSIFEX="1"
+  - TESTS="1" ODOO_REPO="odoo/odoo"
+#  - UNIT_TEST="1"
 
 virtualenv:
   system_site_packages: true
