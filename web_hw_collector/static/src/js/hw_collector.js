@@ -1,4 +1,5 @@
 openerp.web_hw_collector = function(instance) {
+
     instance.web_hw_collector.HwCollector = instance.web.form.FieldChar.extend({
         template: "HwCollector",
         start: function() {
@@ -46,5 +47,14 @@ openerp.web_hw_collector = function(instance) {
     });
 
     instance.web.form.widgets.add("hw_collector", "instance.web_hw_collector.HwCollector");
+
+    instance.web.list.HwCollector = instance.web.list.Char.extend({
+        format: function (row_data, options) {
+            value = row_data[this.id].value;
+            return instance.web.qweb.render('ListView.row.list_collector', {widget: this, value: value});
+        }
+    });
+
+    instance.web.list.columns.add("field.collector", 'instance.web.list.HwCollector');
 }
 

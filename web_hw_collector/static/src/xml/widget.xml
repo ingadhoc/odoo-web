@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template"  xml:space="preserve">
+    <t t-name="ListView.row.list_collector">
+        <t t-esc="value"/>
+        <button class="hw_collector_button" type="button">Read Value</button>
+    </t>
+</templates>
