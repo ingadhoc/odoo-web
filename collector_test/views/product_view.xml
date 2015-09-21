@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="product_collector_form_view" model="ir.ui.view">
+            <field name="name">product.form.collector_test</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+            <data>
+                <field name="type" position="after">
+                    <field name="collected_number" widget="hw_collector"/>
+                </field>
+            </data>
+            </field>
+        </record>
+
+        <record id="product_collector_tree_view" model="ir.ui.view">
+            <field name="name">product.tree.collector_test</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_product_tree_view"/>
+            <field name="arch" type="xml">
+            <data>
+                <field name="ean13" position="after">
+                    <field name="collected_number" widget="collector"/>
+                </field>
+            </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+
