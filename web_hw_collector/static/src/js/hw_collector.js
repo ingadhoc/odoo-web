@@ -63,6 +63,7 @@ openerp.web_hw_collector = function(instance) {
                 attr[field_name] = value;
                 model.call("write", [obj_id, attr]);
             });
+            return false;
         },
         format: function (row_data, options) {
             var attrs = {};
