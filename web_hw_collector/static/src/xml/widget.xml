@@ -2,6 +2,14 @@
 <templates id="template"  xml:space="preserve">
     <t t-name="ListView.row.list_collector">
         <t t-esc="value"/>
-        <button class="hw_collector_button" type="button">Read Value</button>
+        <button
+            class="hw_collector_button"
+            type="button"
+            t-att-obj-id="obj_id"
+            t-att-model-name="model_name"
+            t-att-field-name="field_name"
+            onclick="openerp.web.list.HwCollector.prototype.collect(this)">
+            Read Value
+        </button>
     </t>
 </templates>

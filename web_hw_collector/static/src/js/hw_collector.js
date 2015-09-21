@@ -49,9 +49,24 @@ openerp.web_hw_collector = function(instance) {
     instance.web.form.widgets.add("hw_collector", "instance.web_hw_collector.HwCollector");
 
     instance.web.list.HwCollector = instance.web.list.Char.extend({
+        collect: function(entry) {
+            var obj_id = parseInt(entry.attributes["obj-id"].value);
+            var model_name = entry.attributes["model-name"].value;
+            var field_name = entry.attributes["field-name"].value;
+            var model = new instance.web.Model(model_name);
+            var attr = {};
+            attr[field_name] = 31;
+            model.call("write", [obj_id, attr]);
+        },
         format: function (row_data, options) {
-            value = row_data[this.id].value;
-            return instance.web.qweb.render('ListView.row.list_collector', {widget: this, value: value});
+            var attrs = {};
+            attrs['widget']
+            attrs['widget'] = this;
+            attrs['value'] = row_data[this.id].value;
+            attrs['obj_id'] = options.id;
+            attrs['model_name'] = options.model;
+            attrs['field_name'] = this.id;
+            return instance.web.qweb.render('ListView.row.list_collector', attrs);
         }
     });
 
