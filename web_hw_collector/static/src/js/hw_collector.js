@@ -1,11 +1,13 @@
 openerp.web_hw_collector = function(instance) {
 
-    function createCORSRequest(method, url) {
+    function createCORSRequest(method, url, callback) {
         var xhr = new XMLHttpRequest();
         if ("withCredentials" in xhr) {
+            xhr.addEventListener("loadend", callback);
             xhr.open(method, url, true);
         } else if (typeof XDomainRequest != "undefined") {
             xhr = new XDomainRequest();
+            xhr.addEventListener("loadend", callback);
             xhr.open(method, url);
         } else {
             xhr = null;
@@ -14,16 +16,15 @@ openerp.web_hw_collector = function(instance) {
     }
 
     function corsCall(url, callback) {
-        var xhr = createCORSRequest('GET', url);
-        xhr.onreadystatechange = function() {
+        function inner_callback () {
             if (xhr.status >= 200 && xhr.status < 400) {
                 var responseText = xhr.responseText;
                 callback(responseText);
-                // alert('CORS call completed at \'' + url + '\' returning: ' + responseText);
             } else {
                 alert('Error while calling CORS at ' + url);
             }
-        };
+        }
+        var xhr = createCORSRequest('GET', url, inner_callback);
         xhr.send();
     }
 
@@ -61,7 +62,9 @@ openerp.web_hw_collector = function(instance) {
                 var model = new instance.web.Model(model_name);
                 var attr = {};
                 attr[field_name] = value;
-                model.call("write", [obj_id, attr]);
+                model.call("write", [obj_id, attr]).then(function(){
+                    location.reload(true);
+                });
             });
             return false;
         },
