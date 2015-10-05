@@ -1,0 +1,95 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * login_serial
+# 
+# Translators:
+# Juan Jose Scarafia <scarafia.juanjose@gmail.com>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: odoo-web (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-25 21:58+0000\n"
+"PO-Revision-Date: 2015-08-06 17:18+0000\n"
+"Last-Translator: Juan Jose Scarafia <scarafia.juanjose@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/adhoc/ingadhoc-odoo-web-8-0/language/es/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: login_serial
+#: code:addons/login_serial/res_users.py:55
+#, python-format
+msgid "Cannot generate Serial Id"
+msgstr "No se puede generar el Serial ID"
+
+#. module: login_serial
+#: view:res.users:login_serial.view_users_form_login_serial
+msgid "Generate new Serial Id"
+msgstr "Generar Serial Id"
+
+#. module: login_serial
+#: view:website:login_serial.login
+msgid "Log in"
+msgstr ""
+
+#. module: login_serial
+#: view:website:login_serial.login_layout
+msgid "Manage Databases"
+msgstr "Gestionar Bases de Datos"
+
+#. module: login_serial
+#: view:website:login_serial.login_layout
+msgid "Odoo"
+msgstr ""
+
+#. module: login_serial
+#: code:addons/login_serial/res_users.py:56
+#, python-format
+msgid ""
+"Odoo was unable to generate a fresh random Serial Id. It may be that there "
+"are a big amount of Serial Id already generated. You can try again."
+msgstr ""
+
+#. module: login_serial
+#: view:website:login_serial.login_layout
+msgid "Powered by"
+msgstr ""
+
+#. module: login_serial
+#: code:addons/login_serial/res_users.py:21
+#: view:res.users:login_serial.view_users_form_login_serial
+#: field:res.users,serial_id:0 view:website:login_serial.login
+#, python-format
+msgid "Serial Id"
+msgstr ""
+
+#. module: login_serial
+#: code:addons/login_serial/res_users.py:44
+#, python-format
+msgid "Serial Id invalid format"
+msgstr ""
+
+#. module: login_serial
+#: code:addons/login_serial/res_users.py:45
+#, python-format
+msgid "The Serial Id field has not the EAN-13 format standard."
+msgstr ""
+
+#. module: login_serial
+#: code:addons/login_serial/res_users.py:27 sql_constraint:res.users:0
+#, python-format
+msgid "There is another user with this Serial Id."
+msgstr ""
+
+#. module: login_serial
+#: model:ir.model,name:login_serial.model_res_users
+msgid "Users"
+msgstr ""
+
+#. module: login_serial
+#: code:addons/login_serial/controllers/main.py:91
+#, python-format
+msgid "Wrong Serial Id"
+msgstr ""
