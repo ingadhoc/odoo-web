@@ -22,7 +22,7 @@
     'name': 'Website Documentation',
     'category': 'Website',
     'summary': 'Website, Documentation',
-    'version': '8.0.1.0.0',
+    'version': '8.0.1.1.0',
     'description': """
 Documentation Using Website, pages and google docs
 To create a page you can type: http://localhost:9069/page/asda
