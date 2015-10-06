@@ -114,7 +114,7 @@ class Documentation(models.Model):
          ('published', 'Published')],
         'State',
         required=True,
-        default='published',
+        default='private',
         # default='private',
         help="If private, then it wont be accesible by portal or public users"
         )

@@ -15,9 +15,10 @@
                     <field name="name"/>
                     <field name="parent_id"/>
                     <field name="article_toc_id"/>
+                    <filter string="Root TOC" name="root_toc" domain="[('parent_id', '=', False)]"/>
                     <group expand="0" string="Group By">
-                        <field name="parent_id" string="Parent" context="{'group_by':'parent_id'}"/>
-                        <field name="article_toc_id" string="Article" context="{'group_by':'article_toc_id'}"/>
+                        <filter name="parent_id" string="Parent" context="{'group_by':'parent_id'}"/>
+                        <filter name="article_toc_id" string="Article" context="{'group_by':'article_toc_id'}"/>
                     </group>
                 </search>
             </field>
@@ -98,7 +99,7 @@
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="view_documentation_toc_list"/>
-            <field name="context">{'default_is_article':0}</field>
+            <field name="context">{'default_is_article':0, 'search_default_root_toc': 1}</field>
             <field name="domain">[('is_article', '=', False)]</field>
         </record>
 

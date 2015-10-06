@@ -76,7 +76,6 @@
                 </section>
                 <section class="container">
                     <t t-set="level" t-value="toc and 1 or 0"/>
-                    <!-- no queremos este header, ya esta el breadcum -->
                     <h1 class="page-header" t-if="toc">
                         <t t-esc="toc.name"/>
                     </h1>
@@ -106,14 +105,15 @@
                                 <t t-set="toc" t-value="toc.parent_id"/>
                             </t>
                             <li>
-                                <span t-field="toc.name"/>
-                                <!-- we dont want article as a link -->
-                                <!-- <a t-attf-href="/doc/how-to/" t-field="toc.name"/> -->
+                                <a t-attf-href="/doc/how-to/#{ slug(toc) }" t-field="toc.name"/>
                             </li>
                         </ol>
                     </div>
                 </section>
                 <section class="container">
+                    <h1 class="page-header">
+                        <t t-esc="article.name"/>
+                    </h1>
                     <div class="row">
                         <div t-field='article.content' class="oe_structure"/>
                         <t t-raw="article.google_doc"/>
