@@ -16,5 +16,12 @@
         <field name="domain_force">['|',('group_ids','=',False),('group_ids','in',[x.id for x in user.groups_id])]</field>
     </record>
 
+    <record id="documentation_toc_portal_public_access" model="ir.rule">
+        <field name="name">Documentation TOC portal and public access</field>
+        <field ref="website_doc.model_website_doc_toc" name="model_id"/>
+        <field name="domain_force">[('state','=','published'),'|',('partner_id','=',False),('partner_id.commercial_partner_id','=',user.commercial_partner_id.id)]</field>
+        <field name="groups" eval="[(4, ref('base.group_portal')),(4, ref('base.group_public'))]"/>
+    </record>
+
     </data>
 </openerp>
