@@ -1,7 +1,7 @@
 {
     'name': 'Hardware Collector',
     'category': '',
-    'version': '8.0.1.0.0',
+    'version': '9.0.1.0.0',
     'author': 'ADHOC SA',
     'website': 'www.adhoc.com.ar',
     'description':
@@ -16,6 +16,6 @@ You need to add an ir parameter with key 'hw.proxy' and value url where to read.
         'views/web_hw_collector.xml',
     ],
     'qweb': ['static/src/xml/*.xml'],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
 }

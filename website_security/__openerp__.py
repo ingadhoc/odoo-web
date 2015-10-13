@@ -20,7 +20,7 @@
 ##############################################################################
 {
     'name': 'Website Security',
-    'version': '8.0.1.0.0',
+    'version': '9.0.1.0.0',
     'category': 'Website',
     'sequence': 14,
     'summary': '',
@@ -44,7 +44,7 @@ Give availability to restrict  website menus and pages to some groups.
     ],
     'test': [
     ],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
     'application': False,
 }

@@ -3,7 +3,7 @@
     'category': 'Website',
     'website': 'www.ingadhoc.com',
     'summary': 'Create Issues From a Website Form',
-    'version': '8.0.1.0.0',
+    'version': '9.0.1.0.0',
     'description': """
 Website Issue
 =============
@@ -19,6 +19,6 @@ Website Issue
         'views/website_issue.xml',
         'views/snippets.xml',
     ],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
 }

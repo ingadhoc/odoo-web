@@ -2,7 +2,7 @@
     'name': 'Login Serial',
     'category': 'Login Serial',
     'summary': 'Login Serial',
-    'version': '8.0.1.0.0',
+    'version': '9.0.1.0.0',
     'description': '''
 Adds a Serial Id field to the users that can be used to login in without a
 password.
@@ -20,5 +20,5 @@ Serial Id.''',
         'views/res_users_view.xml',
         'views/webclient_templates.xml',
     ],
-    'installable': True,
+    'installable': False,
 }
