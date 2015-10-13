@@ -28,11 +28,13 @@
         <template id="toc" name="Documentation Index">
             <t t-set="level" t-value="level+1"/>
             <t t-foreach="titles" t-as="title">
-                <div t-attf-class="h#{str(level+1) + (level&lt;3 and ' page-header' or '')}">
-                    <t t-esc="title.name"/>
+                <div t-attf-class="h#{str(level+2) + (level&lt;2 and ' page-header' or '')}">
+                    <!-- <t t-esc="title.name"/> -->
+                    <a t-attf-href="/doc/how-to/#{ slug(title) }" t-field="title.name"/>
                 </div>
 
-                <ul t-if="title.article_ids" class="mt32">
+                <!-- <ul t-if="title.article_ids" class="mt32"> -->
+                <ul t-if="title.article_ids">
                     <li t-foreach="title.article_ids" t-as="article">
                         <a t-attf-href="/doc/how-to/#{slug(title)}/#{slug(article)}" t-field="article.name"/>
                     </li>
@@ -56,9 +58,13 @@
 
         <template id="documentation" name="Documentation Index">
             <t t-call="website.layout">
+                <!-- este es el breadcum de los tocs -->
                 <section class="container mt16" t-if="toc">
                     <div class="row">
                         <ol class="breadcrumb mb0">
+                            <li>
+                                <a href="/doc/how-to">Documentation</a>
+                            </li>
                             <t t-call="website_doc.breadcrumb">
                                 <t t-set="toc" t-value="toc.parent_id"/>
                             </t>
@@ -73,6 +79,13 @@
                     <h1 class="page-header" t-if="toc">
                         <t t-esc="toc.name"/>
                     </h1>
+                    <!-- agregamos los articulos cuando ya no hay titulos hijos -->
+                    <!-- <ul t-if="toc and toc.article_ids" class="mt32"> -->
+                    <ul t-if="toc and toc.article_ids">
+                        <li t-foreach="toc.article_ids" t-as="article">
+                            <a t-attf-href="/doc/how-to/#{slug(toc)}/#{slug(article)}" t-field="article.name"/>
+                        </li>
+                    </ul>
                     <t t-set="titles" t-value="sections"/>
                     <t t-call="website_doc.toc"/>
                 </section>
@@ -85,16 +98,22 @@
                 <section class="container mt16" t-if="toc">
                     <div class="row">
                         <ol class="breadcrumb mb0">
+                            <li>
+                                <a href="/doc/how-to">Documentation</a>
+                            </li>
                             <t t-call="website_doc.breadcrumb">
                                 <t t-set="toc" t-value="toc.parent_id"/>
                             </t>
                             <li>
-                                <a t-attf-href="/doc/how-to/" t-field="toc.name"/>
+                                <a t-attf-href="/doc/how-to/#{ slug(toc) }" t-field="toc.name"/>
                             </li>
                         </ol>
                     </div>
                 </section>
                 <section class="container">
+                    <h1 class="page-header">
+                        <t t-esc="article.name"/>
+                    </h1>
                     <div class="row">
                         <div t-field='article.content' class="oe_structure"/>
                         <t t-raw="article.google_doc"/>

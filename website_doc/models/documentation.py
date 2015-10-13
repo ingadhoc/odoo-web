@@ -41,12 +41,13 @@ class Documentation(models.Model):
     name = fields.Char(
         'Name',
         required=True,
-        translate=True
+        # to avoid complications we disable translation
+        # translate=True,
         )
     parent_id = fields.Many2one(
         'website.doc.toc',
         'Parent Table Of Content',
-        ondelete='set null',
+        ondelete='cascade',
         domain=[('is_article', '=', False)],
         )
     child_ids = fields.One2many(
@@ -68,12 +69,13 @@ class Documentation(models.Model):
     article_toc_id = fields.Many2one(
         'website.doc.toc',
         'Documentation ToC',
-        ondelete='set null'
+        ondelete='set null',
+        domain=[('is_article', '=', False)],
         )
     article_ids = fields.One2many(
         'website.doc.toc',
         'article_toc_id',
-        'Google Docs',
+        'Articles',
         domain=[('is_article', '=', True)],
         context={'default_is_article': 1},
         )
@@ -102,10 +104,26 @@ class Documentation(models.Model):
         'res.groups',
         'website_doc_toc_group_rel',
         'website_toc_id', 'gid', 'Groups',
-        help="If you have groups, the visibility of this TOC will be based on\
-        these groups. "
-        "If this field is empty, Odoo will compute visibility based on the\
-        related object's read access.")
+        help="If you have groups, the visibility of this TOC will be based on "
+        "these groups. "
+        # "If this field is empty, Odoo will compute visibility based on the "
+        # related object's read access."
+        )
+    state = fields.Selection(
+        [('private', 'Is Private'),
+         ('published', 'Published')],
+        'State',
+        required=True,
+        default='private',
+        # default='private',
+        help="If private, then it wont be accesible by portal or public users"
+        )
+    partner_id = fields.Many2one(
+        'res.partner',
+        'Partner',
+        help='If partner is set, only this partner will be able\
+        to see this item (except documentation managers)',
+        )
 
     @api.one
     @api.depends('google_doc_code', 'google_doc_height')
