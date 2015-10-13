@@ -20,5 +20,5 @@ Serial Id.''',
         'views/res_users_view.xml',
         'views/webclient_templates.xml',
     ],
-    'installable': False,
+    'installable': True,
 }
