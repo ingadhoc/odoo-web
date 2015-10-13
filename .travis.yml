@@ -6,7 +6,6 @@ addons:
 
 language: python
 
-# new options suggested by Alexandre Fayolle
 sudo: false
 cache: pip
 
@@ -15,7 +14,7 @@ python:
 
 env:
   global:
-  - VERSION="8.0" TESTS="0" LINT_CHECK="0" TRANSIFEX="0"
+  - VERSION="9.0" TESTS="0" LINT_CHECK="0" TRANSIFEX="0"
   - TRANSIFEX_USER='jjscarafia'
   - TRANSIFEX_ORGANIZATION='adhoc'
   # - TRANSIFEX_TEAM='adhoc'
