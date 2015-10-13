@@ -47,7 +47,7 @@ class Documentation(models.Model):
     parent_id = fields.Many2one(
         'website.doc.toc',
         'Parent Table Of Content',
-        ondelete='set null',
+        ondelete='cascade',
         domain=[('is_article', '=', False)],
         )
     child_ids = fields.One2many(
