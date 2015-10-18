@@ -1,4 +1,5 @@
 openerp.web_hw_collector = function(instance) {
+    var QWeb = instance.web.qweb;
 
     function createCORSRequest(method, url, callback) {
         var xhr = new XMLHttpRequest();
@@ -35,19 +36,31 @@ openerp.web_hw_collector = function(instance) {
         });
     }
 
-    instance.web_hw_collector.HwCollector = instance.web.form.FieldChar.extend({
-        template: "HwCollector",
-        start: function() {
+    instance.web_hw_collector.HwCollector = instance.web.form.AbstractField.extend({
+        events: {
+            'click button': 'button_clicked'
+        },
+        button_clicked: function (event) {
             var _this = this;
-            this.render_value();
-
-            self.$(".hw_collector_button").click(function() {
-                collectCorsCall(function(value){
-                    _this.set_value(value);
-                    _this.render_value();
-                    _this.view.save();
-                });
+            collectCorsCall(function(value){
+                _this.set_value(value);
+                _this.view.save();
             });
+        },
+        init: function() {
+            this._super.apply(this, arguments);
+            this.set_value(0)
+        },
+        start: function() {
+            this.display_field();
+            return this._super();
+        },
+        display_field: function() {
+            var self = this;
+            this.$el.html(QWeb.render("HwCollector", {widget: this}));
+        },
+        render_value: function() {
+            this.$(".oe_form_char_content").text(this.get("value"));
         },
     });
 
