@@ -36,6 +36,8 @@ class website_menu(models.Model):
     @api.one
     @api.depends('url')
     def get_related_view(self):
+        if not self.url:
+            return
         view = False
         page = self.url.split('/')
         page = page and page[-1] or False
