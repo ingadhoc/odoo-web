@@ -3,16 +3,15 @@
 # For copyright and license notices, see __openerp__.py file in module root
 # directory
 ##############################################################################
-from openerp import fields, models, api
+from openerp import api, fields, models
 
 
 class website_menu(models.Model):
     _inherit = "website.menu"
 
     related_view_id = fields.Many2one(
-        'ir.ui.view',
-        compute='get_related_view',
-        )
+        'ir.ui.view', 'Related View',
+        compute='get_related_view')
     group_ids = fields.Many2many(
         'res.groups',
         'website_menu_group_rel',
@@ -33,6 +32,19 @@ class website_menu(models.Model):
             self.related_view_id.write(
                 {'groups_id': [(6, False, self.group_ids.ids)]})
 
+    @api.multi
+    def write(self, vals):
+        res = super(website_menu, self).write(vals)
+        self.add_rights_submenu()
+        return res
+
+    def add_rights_submenu(self):
+        if self.parent_id and self.parent_id.group_ids and not self.group_ids:
+            self.group_ids = self.parent_id.group_ids.ids
+        if self.related_view_id and not self.related_view_id.groups_id:
+            self.related_view_id.write(
+                {'groups_id': [(6, False, self.group_ids.ids)]})
+
     @api.one
     @api.depends('url')
     def get_related_view(self):
@@ -44,5 +56,6 @@ class website_menu(models.Model):
         if page:
             if 'website.' not in page:
                 page = 'website.' + page
-            view = self.env['ir.model.data'].xmlid_to_object(page)
+            page_name = page[8:]
+            view = self.env['ir.ui.view'].search([('name', '=', page_name)])
         self.related_view_id = view
