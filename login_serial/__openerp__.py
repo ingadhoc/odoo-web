@@ -11,6 +11,7 @@ A new URL is provided "http://domain/login_serial/" to login with the specified
 Serial Id.''',
     'author': 'ADHOC SA',
     'website': 'www.adhoc.com.ar',
+    'license': 'AGPL-3',
     'depends': ['website'],
     'external_dependencies':
     {
