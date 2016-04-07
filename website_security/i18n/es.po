@@ -49,3 +49,7 @@ msgstr "Website Menus"
 msgid "Website Views"
 msgstr "Website Views"
 
+#. module: website_security
+#: field:website.menu,related_view_id:0
+msgid "Related View"
+msgstr ""
