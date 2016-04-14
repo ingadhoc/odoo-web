@@ -6,6 +6,7 @@
     'description': """
 Website Issue
 =============
+Create issues from website like a contact form
         """,
     'author': 'ADHOC SA',
     'website': 'www.adhoc.com.ar',
