@@ -73,8 +73,8 @@ class Home(http.Controller):
             old_uid = request.uid
 
             serial_id = request.params['serial_id']
-            users_obj = request.registry.get('res.users')
-            user_vals = users_obj.search_read(
+            partner_obj = request.registry.get('res.partner')
+            user_vals = partner_obj.search_read(
                 request.cr, openerp.SUPERUSER_ID,
                 [('serial_id', '=', serial_id)],
                 ['id', 'login']
