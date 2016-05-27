@@ -1,0 +1,105 @@
+table .fixed_headers {
+	overflow-y: auto;
+    overflow-x: hidden;
+    display:block;
+}
+
+table .oe_list_header_custom {
+	position:relative;
+	z-index:1000;
+}
+
+table .oe_list_header_custom > thead {
+    background: #eee none repeat scroll 0 0;
+    border-bottom: 2px solid #cacaca;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+table .oe_list_header_custom td, table .oe_list_header_custom th {
+    line-height: 18px;
+    padding: 3px 6px;
+}
+
+table .oe_list_header_custom th.oe_list_header_handle {
+    font-size: 1px;
+    overflow: hidden;
+    text-indent: -9001px;
+}
+
+table .oe_list_header_custom th.sortdown div::after {
+    border-color: #000 transparent !important;
+    border-style: solid solid none !important;
+    border-width: 4px 4px medium !important;
+    box-shadow: none !important;
+    float: right !important;
+    opacity: 0.6 !important;
+    visibility: visible !important;
+}
+
+table .oe_list_header_custom th.sortup div::after {
+    float: right !important;
+    opacity: 0.6 !important;
+    visibility: visible !important;
+}
+
+table .oe_list_header_custom th.oe_sortable div::after {
+    border-color: #000 transparent;
+    border-style: solid;
+    border-width: 0 4px 4px;
+    content: "";
+    margin-right: 6px;
+    margin-top: 7px;
+    visibility: hidden;
+}
+
+.openerp .oe_dropdown_menu {
+	z-index:99999 !important;
+}
+
+.openerp .oe_searchview .oe-autocomplete {
+	z-index:99999 !important;
+}
+
+.openerp .oe_collapse_invisibility {
+	border-bottom:none !important;
+}
+
+.openerp .oe_collapse_invisibility div, .openerp .oe_collapse_invisibility input{
+	height: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: 0px;
+}
+
+.openerp .oe_collapse_invisibility input{
+	position: absolute;
+}
+
+.openerp .oe_collapse_invisibility th{
+	padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/*table.fixed_headers tbody,
+table.fixed_headers thead,
+table.fixed_headers tfoot {
+	display: block; 
+	width:100%;
+}
+
+table.fixed_headers tbody {
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+table.fixed_headers tfoot {
+	position:absolute;
+}
+
+table .fixed_headers td.oe_number {
+	max-width:300px !important;
+}*/
