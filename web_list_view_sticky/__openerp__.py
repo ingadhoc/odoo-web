@@ -15,7 +15,7 @@ Web List View Fixed Table Header
     'data': [
         'views/web_list_view_sticky.xml',
     ],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
     'application': False,
 }
