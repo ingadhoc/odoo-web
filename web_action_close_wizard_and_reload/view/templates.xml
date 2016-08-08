@@ -1,9 +1,0 @@
-<openerp>
-    <data>
-        <template id="assets_backend" name="/web_action_close_wizard_and_reload assets" inherit_id="web.assets_backend">
-        <xpath expr="." position="inside">
-            <script type="text/javascript" src="/web_action_close_wizard_and_reload/static/src/js/web_action_close_wizard_and_reload.js"></script>
-        </xpath>
-        </template>
-    </data>
-</openerp>

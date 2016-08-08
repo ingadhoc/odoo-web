@@ -1,12 +1,11 @@
 {
-    'name': 'Web Action, close wizard and reload',
+    'name': 'Reload view on window close Action',
     'category': 'Web',
     'version': '8.0.1.0.0',
     'description': """
-Web Action, close wizard and reload
-===================================
-TODO: tal vez podemos modificar directamente ir_actions_act_window_close
-para que se comporte asi
+Reload view on window close Action
+==================================
+Makes ir_actions_act_window_close to reload kanban or tree view
         """,
     'author': 'ADHOC SA',
     'website': 'www.adhoc.com.ar',

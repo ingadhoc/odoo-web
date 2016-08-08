@@ -1,6 +1,6 @@
-openerp.web_action_close_wizard_and_reload = function(instance) {
+openerp.web_action_close_wizard_view_reload = function(instance) {
     instance.web.ActionManager = instance.web.ActionManager.extend({
-        ir_actions_act_close_wizard_and_reload_view: function (action, options) {
+        ir_actions_act_window_close: function (action, options) {
             if (!this.dialog) {
                 options.on_close();
             }
@@ -19,7 +19,7 @@ openerp.web_action_close_wizard_and_reload = function(instance) {
     });
 }
 // esta era la otra alternativa usando bus
-// openerp.web_action_close_wizard_and_reload = function(instance) {
+// openerp.web_action_close_wizard_view_reload = function(instance) {
 //     var bus = instance.bus.bus;
 //     bus.add_channel("<CHANNEL-NAME>");
 //     instance.bus.bus.on("notification", instance, function(notification){
