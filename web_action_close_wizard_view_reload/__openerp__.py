@@ -1,7 +1,7 @@
 {
     'name': 'Reload view on window close Action',
     'category': 'Web',
-    'version': '8.0.1.0.0',
+    'version': '8.0.1.0.1',
     'description': """
 Reload view on window close Action
 ==================================
