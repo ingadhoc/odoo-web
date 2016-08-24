@@ -11,7 +11,7 @@ Web List View Fixed Table Header
 """,
     'author': 'Andre Leander',
     'website': 'leeshienwen@gmail.com',
-    'depends': ['web','base'],
+    'depends': ['web', 'base'],
     'data': [
         'views/web_list_view_sticky.xml',
     ],

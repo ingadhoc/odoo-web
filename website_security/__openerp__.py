@@ -45,7 +45,7 @@ Give availability to restrict  website menus and pages to some groups.
     ],
     'test': [
     ],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
     'application': False,
 }

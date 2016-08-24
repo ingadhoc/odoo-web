@@ -16,6 +16,6 @@ Makes ir_actions_act_window_close to reload kanban or tree view
     'data': [
         'view/templates.xml',
     ],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
 }

@@ -14,7 +14,7 @@ Create issues from website like a contact form
     'depends': [
         'website_partner',
         'project_issue',
-        ],
+    ],
     'data': [
         'data/website_issue_data.xml',
         'views/website_issue.xml',

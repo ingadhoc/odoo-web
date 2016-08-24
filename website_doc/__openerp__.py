@@ -45,6 +45,6 @@ To create a page you can type: http://localhost:9069/page/asda
     'qweb': [
         'static/src/xml/website_doc.xml'
     ],
-    'installable': True,
+    'installable': False,
     'application': True,
 }

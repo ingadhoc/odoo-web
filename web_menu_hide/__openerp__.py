@@ -32,18 +32,18 @@ Web Menu Hide/Show
 """,
     'version': '1.0',
     'depends': ['web'],
-    'data' : [
+    'data': [
         'views/web_menu_hide.xml'
     ],
-    'qweb' : [
+    'qweb': [
     ],
-    'js' : [
+    'js': [
         'static/src/js/web_menu_hide.js'
     ],
-    'css' : [
+    'css': [
         'static/src/css/web_menu_hide.css'
     ],
     'auto_install': False,
-    'installable': True,
+    'installable': False,
     'application': True,
 }
