@@ -29,6 +29,7 @@ To create a page you can type: http://localhost:9069/page/asda
         """,
     'author': 'ADHOC SA',
     'website': 'www.adhoc.com.ar',
+    'license': 'AGPL-3',
     'depends': [
         'website',
     ],

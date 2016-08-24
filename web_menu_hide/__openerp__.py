@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2015  ADHOC SA  (http://www.adhoc.com.ar)
-#    All Rights Reserved.
+#    OpenERP, Open Source Enterprise Management Solution
+#    risk_management Module
+#    Copyright (C) 2014 OpenSur (comercial@opensur.com)
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,34 +20,30 @@
 #
 ##############################################################################
 {
-    'name': 'Website Security',
-    'version': '9.0.1.0.0',
-    'category': 'Website',
-    'sequence': 14,
-    'summary': '',
+    'name': 'Web Menu Hide/Show',
+    'category': 'Web',
+    'author': 'OpenSur SA',
     'description': """
-Website Security
-================
-Give availability to restrict  website menus and pages to some groups.
-    """,
-    'author': 'ADHOC SA',
-    'website': 'www.adhoc.com.ar',
-    'license': 'AGPL-3',
-    'images': [
+Web Menu Hide/Show
+==================
+
+    * Improves UI by allowing user to hide/show left menu bar
+
+""",
+    'version': '1.0',
+    'depends': ['web'],
+    'data' : [
+        'views/web_menu_hide.xml'
     ],
-    'depends': [
-        'website',
+    'qweb' : [
     ],
-    'data': [
-        'views/website_views.xml',
-        'security/security.xml',
+    'js' : [
+        'static/src/js/web_menu_hide.js'
     ],
-    'demo': [
+    'css' : [
+        'static/src/css/web_menu_hide.css'
     ],
-    'test': [
-    ],
-    'installable': True,
     'auto_install': False,
-    'application': False,
+    'installable': True,
+    'application': True,
 }
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
