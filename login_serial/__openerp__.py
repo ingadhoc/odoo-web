@@ -34,4 +34,6 @@
         'views/webclient_templates.xml',
     ],
     'installable': True,
+    'auto_install': False,
+    'application': False,
 }

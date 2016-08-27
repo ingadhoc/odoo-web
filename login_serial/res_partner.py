@@ -19,7 +19,7 @@ class res_partner(Model):
     _name = 'res.partner'
     _inherit = 'res.partner'
 
-    serial_id = fields.Char(string=_('Serial Id'), readonly=True)
+    serial_id = fields.Char(string='Serial Id', readonly=True)
 
     _sql_constraints = [
         (
