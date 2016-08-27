@@ -33,7 +33,7 @@ def ean_checksum(eancode):
     total = 0
     eanvalue = eancode
     reversevalue = eanvalue[::-1]
-    finalean=reversevalue[1:]
+    finalean = reversevalue[1:]
 
     for i in range(len(finalean)):
         if i % 2 == 0:
@@ -42,7 +42,7 @@ def ean_checksum(eancode):
             evensum += int(finalean[i])
     total = (oddsum * 3) + evensum
 
-    check = int(10 - math.ceil(total % 10.0)) %10
+    check = int(10 - math.ceil(total % 10.0)) % 10
     return check
 
 
