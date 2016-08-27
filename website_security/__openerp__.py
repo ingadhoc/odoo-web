@@ -24,11 +24,6 @@
     'category': 'Website',
     'sequence': 14,
     'summary': '',
-    'description': """
-Website Security
-================
-Give availability to restrict  website menus and pages to some groups.
-    """,
     'author': 'ADHOC SA',
     'website': 'www.adhoc.com.ar',
     'license': 'AGPL-3',
@@ -45,7 +40,7 @@ Give availability to restrict  website menus and pages to some groups.
     ],
     'test': [
     ],
-    'installable': False,
+    'installable': True,
     'auto_install': False,
     'application': False,
 }
