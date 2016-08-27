@@ -15,7 +15,7 @@ def generate_serial_id():
     return sanitize_ean13(serial_id)
 
 
-class ResPartner(Model):
+class res_partner(Model):
     _name = 'res.partner'
     _inherit = 'res.partner'
 

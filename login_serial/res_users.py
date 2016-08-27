@@ -15,7 +15,7 @@ def generate_serial_id():
     return sanitize_ean13(serial_id)
 
 
-class ResUsers(Model):
+class res_users(Model):
     _name = 'res.users'
     _inherit = 'res.users'
 
