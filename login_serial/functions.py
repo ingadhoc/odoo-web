@@ -24,13 +24,14 @@ import re
 
 
 def ean_checksum(eancode):
-    """returns the checksum of an ean string of length 13, returns -1 if the string has the wrong length"""
+    """returns the checksum of an ean string of length 13,
+    returns -1 if the string has the wrong length"""
     if len(eancode) != 13:
         return -1
-    oddsum=0
-    evensum=0
-    total=0
-    eanvalue=eancode
+    oddsum = 0
+    evensum = 0
+    total = 0
+    eanvalue = eancode
     reversevalue = eanvalue[::-1]
     finalean=reversevalue[1:]
 
@@ -39,7 +40,7 @@ def ean_checksum(eancode):
             oddsum += int(finalean[i])
         else:
             evensum += int(finalean[i])
-    total=(oddsum * 3) + evensum
+    total = (oddsum * 3) + evensum
 
     check = int(10 - math.ceil(total % 10.0)) %10
     return check
@@ -62,8 +63,8 @@ def sanitize_ean13(ean13):
     """Creates and returns a valid ean13 from an invalid one"""
     if not ean13:
         return "0000000000000"
-    ean13 = re.sub("[A-Za-z]","0",ean13);
-    ean13 = re.sub("[^0-9]","",ean13);
+    ean13 = re.sub("[A-Za-z]", "0", ean13)
+    ean13 = re.sub("[^0-9]", "", ean13)
     ean13 = ean13[:13]
     if len(ean13) < 13:
         ean13 = ean13 + '0' * (13-len(ean13))
