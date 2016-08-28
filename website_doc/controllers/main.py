@@ -5,7 +5,6 @@
 ##############################################################################
 from openerp import http
 from openerp.http import request
-from openerp.addons.website.models.website import slug
 
 
 class WebsiteDoc(http.Controller):
@@ -13,8 +12,8 @@ class WebsiteDoc(http.Controller):
                  '/doc/how-to/<model("website.doc.toc"):toc>'],
                 type='http', auth="public", website=True)
     def toc(self, toc=None, **kwargs):
-        cr, uid, context, toc_id = \
-            request.cr, request.uid, request.context, False
+        cr, uid, context, request.cr, \
+        request.uid, request.context, False
         if toc:
             sections = toc.child_ids
         else:
@@ -28,7 +27,8 @@ class WebsiteDoc(http.Controller):
             'main_object': toc,
             'sections': sections,
         }
-        return request.website.render("website_doc.documentation", value)
+        return request.website.render(
+            "website_doc.documentation", value)
 
     @http.route(['''/doc/how-to/<model("website.doc.toc"):toc>/<model(\
     "website.doc.toc", "[('article_toc_id','=',toc[0])]"):article>'''],
@@ -40,7 +40,8 @@ class WebsiteDoc(http.Controller):
             'article': article,
             'main_object': article,
         }
-        return request.website.render("website_doc.documentation_post", value)
+        return request.website.render(
+            "website_doc.documentation_post", value)
     # funcionaba con los google docs
     # @http.route(['''/doc/how-to/<model("website.doc.toc"):toc>/<model
     # ("website.doc.google_doc",
@@ -81,8 +82,10 @@ class WebsiteDoc(http.Controller):
     # forum>/question/<model("forum.post"):post>/promote',
     # type='http', auth="user", website=True)
     # def post_toc(self, forum, post, **kwargs):
-    #     cr, uid, context, toc_id = request.cr, request.uid, request.context, False
-    #     user = request.registry['res.users'].browse(cr, uid, uid, context=context)
+    #     cr, uid, context, toc_id = request.cr, request.uid,
+    # request.context, False
+    #     user = request.registry['res.users'].browse(cr, uid,
+    # uid, context=context)
     #     assert user.karma >= 200, 'You need 200 karma
     # to promote a post to the documentation'
     #     toc_obj = request.registry['forum.documentation.toc']
@@ -93,15 +96,19 @@ class WebsiteDoc(http.Controller):
     #         # 'forum': post.forum_id,
     #         'chapters': filter(lambda x: not x.child_ids, tocs)
     #     }
-    #     return request.website.render("website_doc.promote_question", value)
+    #     return request.website.render(
+    # "website_doc.promote_question", value)
 
-    # TODO tal vez elimnar esta route que no vamos a usar o implemetnarla!
+    # TODO tal vez elimnar esta route que no
+    # vamos a usar o implemetnarla!
     # @http.route('/doc/<model("forum.forum"):forum>/promote_ok',
     # type='http', auth="user", website=True)
     # def post_toc_ok(self, forum, post_id, toc_id, **kwargs):
     #     cr, uid, context = request.cr, request.uid, request.context
-    #     user = request.registry['res.users'].browse(cr, uid, uid, context=context)
-    #     assert user.karma >= 200, 'Not enough karma, you need 200 to promote a documentation.'
+    #     user = request.registry['res.users'].browse(
+    # cr, uid, uid, context=context)
+    #     assert user.karma >= 200, 'Not enough karma,
+    # you need 200 to promote a documentation.'
 
     #     toc_obj = request.registry['website.doc.toc']
     #     stage_ids = toc_obj.search(cr, uid, [], limit=1, context=context)

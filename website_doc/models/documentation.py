@@ -153,7 +153,8 @@ google_doc_template = """
      frameborder="0" width="100%%" height="300" scrolling="no">
     </iframe>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+    </script>
     <script>
     $(function() {
         $.get("https://docs.google.com/document/d/%s/pub?", function(html) {
