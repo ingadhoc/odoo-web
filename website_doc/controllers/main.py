@@ -12,8 +12,8 @@ class WebsiteDoc(http.Controller):
                  '/doc/how-to/<model("website.doc.toc"):toc>'],
                 type='http', auth="public", website=True)
     def toc(self, toc=None, **kwargs):
-        cr, uid, context, request.cr, \
-        request.uid, request.context, False
+        cr, uid, context, toc_id = request.cr, \
+                                   request.uid, request.context, False
         if toc:
             sections = toc.child_ids
         else:
@@ -48,13 +48,15 @@ class WebsiteDoc(http.Controller):
     #  "[('documentation_toc_id','=',toc[0])]"):google_doc>'''],
     # type='http', auth="public", website=True)
     # def google_doc_render(self, toc, google_doc, **kwargs):
-    #     assert google_doc.documentation_toc_id.id == toc.id, "Wrong post!"
+    #     assert google_doc.documentation_toc_id.id == toc.id,
+    # "Wrong post!"
     #     value = {
     #         'toc': toc,
     #         'google_doc': google_doc,
     #         'main_object': google_doc,
     #     }
-    #     return request.website.render("website_doc.documentation_post", value)
+    #     return request.website.render(
+    # "website_doc.documentation_post", value)
 
     # Este es el que funciona
     # @http.route(['''/doc/how-to/<model("website.doc.toc"):toc>/<model
@@ -99,8 +101,8 @@ class WebsiteDoc(http.Controller):
     #     return request.website.render(
     # "website_doc.promote_question", value)
 
-    # TODO tal vez elimnar esta route que no
-    # vamos a usar o implemetnarla!
+    # TODO tal vez elimnar esta route que no vamos
+    # a usar o implemetnarla!
     # @http.route('/doc/<model("forum.forum"):forum>/promote_ok',
     # type='http', auth="user", website=True)
     # def post_toc_ok(self, forum, post_id, toc_id, **kwargs):
