@@ -12,8 +12,7 @@ class WebsiteDoc(http.Controller):
                  '/doc/how-to/<model("website.doc.toc"):toc>'],
                 type='http', auth="public", website=True)
     def toc(self, toc=None, **kwargs):
-        cr, uid, context
-        request.uid, request.context, False
+        cr, uid, context = request.cr, request.uid, request.context
         if toc:
             sections = toc.child_ids
         else:

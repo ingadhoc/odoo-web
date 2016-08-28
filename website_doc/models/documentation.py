@@ -167,6 +167,6 @@ google_doc_template = """
             }, 1000);
         });
     });
-    </script>            
- </div>
+    </script>
+</div>
 """
