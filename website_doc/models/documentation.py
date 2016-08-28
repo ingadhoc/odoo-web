@@ -102,7 +102,7 @@ class Documentation(models.Model):
         )
     google_doc = fields.Text(
         'Content',
-        compute='get_google_doc',
+        compute='_get_google_doc',
         )
     group_ids = fields.Many2many(
         'res.groups',
@@ -134,8 +134,8 @@ class Documentation(models.Model):
 
     @api.one
     @api.depends('google_doc_code', 'google_doc_height')
-    def get_google_doc(self):
-        google_doc = False
+    def _get_google_doc(self):
+        self.google_doc = False
         if self.google_doc_height and self.google_doc_code:
             google_doc = google_doc_template % (
                 self.google_doc_height, self.google_doc_code)
