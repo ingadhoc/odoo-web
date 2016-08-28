@@ -56,7 +56,7 @@ class contactus(http.Controller):
     @http.route(['/project/issue'], type='http',
                 auth="public", website=True)
     def contactus(self, **kwargs):
-        print 'aaaaaaaa'
+        # print 'aaaaaaaa'
 
         def dict_to_str(title, dictvar):
             ret = "\n\n%s" % title
@@ -82,9 +82,9 @@ class contactus(http.Controller):
         for field_name, field_value in kwargs.items():
             if hasattr(field_value, 'filename'):
                 post_file.append(field_value)
-            elif field_name in \
-                    request.registry['project.issue']._all_columns and \
-                            field_name not in _BLACKLIST:
+            elif field_name in request.registry[
+                'project.issue']._all_columns\
+                    and field_name not in _BLACKLIST:
                 values[field_name] = field_value
             # allow to add some free fields or blacklisted field like ID
             elif field_name not in _TECHNICAL:
