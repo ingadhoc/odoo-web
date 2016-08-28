@@ -168,5 +168,5 @@ google_doc_template = """
         });
     });
     </script>            
-</div>
+ </div>
 """
