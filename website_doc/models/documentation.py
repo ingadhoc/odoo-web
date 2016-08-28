@@ -20,7 +20,9 @@ class Documentation(models.Model):
             return []
         if isinstance(ids, (long, int)):
             ids = [ids]
-        reads = self.read(cr, uid, ids, ['name', 'parent_id'], context=context)
+        reads = self.read(
+            cr, uid, ids, ['name', 'parent_id'],
+            context=context)
         res = []
         for record in reads:
             name = record['name']
@@ -30,7 +32,9 @@ class Documentation(models.Model):
         return res
 
     # TODO master remove me
-    def _name_get_fnc(self, cr, uid, ids, prop, unknow_none, context=None):
+    def _name_get_fnc(
+            self, cr, uid, ids,
+            prop, unknow_none, context=None):
         res = self.name_get(cr, uid, ids, context=context)
         return dict(res)
 
@@ -104,9 +108,11 @@ class Documentation(models.Model):
         'res.groups',
         'website_doc_toc_group_rel',
         'website_toc_id', 'gid', 'Groups',
-        help="If you have groups, the visibility of this TOC will be based on "
-        "these groups. "
-        # "If this field is empty, Odoo will compute visibility based on the "
+        help="If you have groups, "
+             "the visibility of this TOC will "
+             "be based on these groups. "
+        # "If this field is empty, Odoo will compute
+        # visibility based on the "
         # related object's read access."
         )
     state = fields.Selection(
@@ -116,7 +122,8 @@ class Documentation(models.Model):
         required=True,
         default='private',
         # default='private',
-        help="If private, then it wont be accesible by portal or public users"
+        help="If private, then it wont be accesible "
+             "by portal or public users"
         )
     partner_id = fields.Many2one(
         'res.partner',
@@ -141,7 +148,9 @@ class Documentation(models.Model):
 
 google_doc_template = """
  <div class="row">
-    <iframe id="google-doc-iframe" srcdoc="" style="height: %s; margin: 0 auto; padding-left: 20px; padding-right: 20px" align="middle" frameborder="0" width="100%%" height="300" scrolling="no">
+    <iframe id="google-doc-iframe" srcdoc="" style="height: %s; margin:
+     0 auto; padding-left: 20px; padding-right: 20px" align="middle"
+     frameborder="0" width="100%%" height="300" scrolling="no">
     </iframe>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -150,8 +159,10 @@ google_doc_template = """
         $.get("https://docs.google.com/document/d/%s/pub?", function(html) {
             $("#google-doc-iframe").attr("srcdoc", html);
             setTimeout(function() {
-                $("#google-doc-iframe").contents().find('a[href^="http://"]').attr("target", "_blank");
-                $("#google-doc-iframe").contents().find('a[href^="https://"]').attr("target", "_blank");
+                $("#google-doc-iframe").contents().find(
+                'a[href^="http://"]').attr("target", "_blank");
+                $("#google-doc-iframe").contents().find(
+                'a[href^="https://"]').attr("target", "_blank");
             }, 1000);
         });
     });
