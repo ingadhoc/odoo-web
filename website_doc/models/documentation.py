@@ -4,7 +4,7 @@
 # directory
 ##############################################################################
 from openerp import models, fields, api
-# from openerp.osv import osv
+from openerp.osv import osv
 
 
 class Documentation(models.Model):
@@ -141,10 +141,10 @@ class Documentation(models.Model):
                 self.google_doc_height, self.google_doc_code)
         self.google_doc = google_doc
 
-    # _constraints = [
-    #     (osv.osv._check_recursion,
-    #         'Error ! You cannot create recursive categories.', ['parent_id'])
-    # ]
+    _constraints = [
+        (osv.osv._check_recursion,
+            'Error ! You cannot create recursive categories.', ['parent_id'])
+    ]
 
 google_doc_template = """
  <div class="row">
