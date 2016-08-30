@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from functions import check_ean, sanitize_ean13
+from .functions import check_ean, sanitize_ean13
 from openerp import api, exceptions, fields, _
 from openerp.models import Model
 import random
