@@ -23,10 +23,6 @@
     'category': 'Website',
     'summary': 'Website, Documentation',
     'version': '9.0.1.0.0',
-    'description': """
-Documentation Using Website, pages and google docs
-To create a page you can type: http://localhost:9069/page/asda
-        """,
     'author': 'ADHOC SA',
     'website': 'www.adhoc.com.ar',
     'license': 'AGPL-3',
@@ -45,6 +41,6 @@ To create a page you can type: http://localhost:9069/page/asda
     'qweb': [
         'static/src/xml/website_doc.xml'
     ],
-    'installable': False,
+    'installable': True,
     'application': True,
 }
