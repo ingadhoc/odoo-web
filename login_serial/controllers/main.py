@@ -40,7 +40,7 @@ class Home(http.Controller):
                 request.uid = request.session.uid
 
             menu_data = request.registry['ir.ui.menu'].load_menus(
-                request.cr, request.uid, context=request.context
+                request.cr, request.uid, request.debug, context=request.context
             )
             return request.render(
                 'login_serial.webclient_bootstrap',

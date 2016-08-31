@@ -1,5 +1,6 @@
-from openerp.addons.product.product import check_ean, sanitize_ean13
-from openerp import api, exceptions, fields,  _
+# -*- coding: utf-8 -*-
+from .functions import check_ean, sanitize_ean13
+from openerp import api, exceptions, fields, _
 from openerp.models import Model
 import random
 
@@ -18,7 +19,7 @@ class res_partner(Model):
     _name = 'res.partner'
     _inherit = 'res.partner'
 
-    serial_id = fields.Char(string=_('Serial Id'), readonly=True)
+    serial_id = fields.Char(string='Serial Id', readonly=True)
 
     _sql_constraints = [
         (
@@ -42,7 +43,8 @@ class res_partner(Model):
         if 'serial_id' in vals and not check_ean(vals['serial_id']):
             raise exceptions.Warning(
                 _('Serial Id invalid format'),
-                _('The Serial Id field has not the EAN-13 format standard.')
+                _('The Serial Id field has not the EAN-13 '
+                  'format standard.')
             )
 
     @api.model
