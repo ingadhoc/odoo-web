@@ -22,6 +22,9 @@ openerp.web_action_close_wizard_view_reload = function(instance) {
                 else if (active_view == "list" && dialog) {
                     controller.reload();
                 }
+                else if (active_view == "form") {
+                    controller.reload();
+                }
             return $.when();
         },
     });

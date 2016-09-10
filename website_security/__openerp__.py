@@ -36,6 +36,7 @@ Give availability to restrict  website menus and pages to some groups.
     ],
     'depends': [
         'website',
+        'portal',
     ],
     'data': [
         'views/website_views.xml',
