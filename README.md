@@ -1,4 +1,4 @@
-[![Runbot Status](http://runbot.adhoc.com.ar/runbot/badge/flat/2/8.0.svg)](http://runbot.adhoc.com.ar/runbot/repo/github-com-ingadhoc-odoo-web-2)
+[![Runbot Status](http://runbot.adhoc.com.ar/runbot/badge/flat/24/8.0.svg)](http://runbot.adhoc.com.ar/runbot/repo/github-com-ingadhoc-odoo-web-24)
 [![Build Status](https://travis-ci.org/ingadhoc/odoo-web.svg?branch=8.0)](https://travis-ci.org/ingadhoc/odoo-web)
 [![Coverage Status](https://coveralls.io/repos/ingadhoc/odoo-web/badge.png?branch=8.0)](https://coveralls.io/r/ingadhoc/odoo-web?branch=8.0)
 [![Code Climate](https://codeclimate.com/github/ingadhoc/odoo-web/badges/gpa.svg)](https://codeclimate.com/github/ingadhoc/odoo-web)
