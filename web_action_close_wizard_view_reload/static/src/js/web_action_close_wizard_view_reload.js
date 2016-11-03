@@ -6,6 +6,16 @@ openerp.web_action_close_wizard_view_reload = function(instance) {
             // para vista tree cuando no hay dialog (es decir cuando no 
             // volvemos desde wizard, como no se como arreglarlo, entonce
             // desactivamos cuando no viene de wizard para la tree)
+
+            var active_view = this.inner_widget.active_view
+            // if no active_view default beahviour
+            if (!active_view) {
+                if (!this.dialog) {
+                    options.on_close();
+                }
+                this.dialog_stop();
+                return $.when();
+            }
             var dialog = true
             if (!this.dialog) {
                 options.on_close();
@@ -14,7 +24,6 @@ openerp.web_action_close_wizard_view_reload = function(instance) {
             this.dialog_stop();
             // do_reload es para kanban, reload para list
             // sacamos un poco de codigo de web_auto_refresh
-            var active_view = this.inner_widget.active_view
             var controller = this.inner_widget.views[active_view].controller
             if (active_view == "kanban"){
                     controller.do_reload();
