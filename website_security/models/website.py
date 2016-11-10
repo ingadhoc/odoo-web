@@ -10,8 +10,10 @@ class website_menu(models.Model):
     _inherit = "website.menu"
 
     related_view_id = fields.Many2one(
-        'ir.ui.view', 'Related View',
-        compute='get_related_view')
+        'Related View',
+        'ir.ui.view',
+        compute='get_related_view',
+    )
     group_ids = fields.Many2many(
         'res.groups',
         'website_menu_group_rel',
@@ -20,10 +22,11 @@ class website_menu(models.Model):
         'Groups',
         # domain=[('is_portal', '=', True)],
         context={'default_is_portal': True},
-        help="If you have groups, the visibility "
-             "of this menu will be based on these groups. "
-        "If this field is empty, Odoo will compute visibility "
-             "based on the related object's read access.")
+        help="If you have groups, the visibility of this menu will be based "
+        "on these groups. "
+        "If this field is empty, Odoo will compute visibility based on the "
+        "related object's read access."
+    )
 
     @api.one
     @api.onchange('group_ids')
