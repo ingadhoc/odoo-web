@@ -3,159 +3,160 @@
 # * web_dashboard_tile
 # 
 # Translators:
-# Juan José Scarafía <scarafia.juanjose@gmail.com>, 2016
+# Nicolas Mac Rouillon <nmr@ingadhoc.com>, 2017
+# Juan José Scarafía <scarafia.juanjose@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-28 12:29+0000\n"
 "PO-Revision-Date: 2016-12-28 12:29+0000\n"
-"Last-Translator: Juan José Scarafía <scarafia.juanjose@gmail.com>, 2016\n"
-"Language-Team: French (https://www.transifex.com/adhoc/teams/46451/fr/)\n"
+"Last-Translator: Juan José Scarafía <scarafia.juanjose@gmail.com>, 2017\n"
+"Language-Team: Spanish (https://www.transifex.com/adhoc/teams/46451/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_action_id
 msgid "Action"
-msgstr "Action"
+msgstr "Acción"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_active
 msgid "Active"
-msgstr "Actif"
+msgstr "Activo"
 
 #. module: web_dashboard_tile
 #: selection:tile.tile,primary_function:0
 #: selection:tile.tile,secondary_function:0
 msgid "Average"
-msgstr "Moyenne"
+msgstr "Promedio"
 
 #. module: web_dashboard_tile
 #: code:addons/web_dashboard_tile/models/tile_tile.py:74
 #, python-format
 msgid "Average value of '%s'"
-msgstr "Valeur moyenne du champ '%s'"
+msgstr "Valor medio de '%s'"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_background_color
 msgid "Background color"
-msgstr "Couleur de fond"
+msgstr "Color de Fondo"
 
 #. module: web_dashboard_tile
 #: selection:tile.tile,primary_function:0
 #: selection:tile.tile,secondary_function:0
 msgid "Count"
-msgstr "Quantité"
+msgstr "Contar"
 
 #. module: web_dashboard_tile
 #. openerp-web
 #: code:addons/web_dashboard_tile/static/src/xml/custom_xml.xml:8
 #, python-format
 msgid "Create"
-msgstr "Créer"
+msgstr "Crear"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creado por"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creado en"
 
 #. module: web_dashboard_tile
 #: model:ir.actions.act_window,name:web_dashboard_tile.action_kanban_dashboard_tile
 #: model:ir.actions.act_window,name:web_dashboard_tile.action_tree_dashboard_tile
 #: model:ir.ui.menu,name:web_dashboard_tile.mail_dashboard
 msgid "Dashboard"
-msgstr "Tableau de bord"
+msgstr "Tablero"
 
 #. module: web_dashboard_tile
 #: model:ir.model,name:web_dashboard_tile.model_tile_tile
 #: model:ir.ui.menu,name:web_dashboard_tile.menue_dashboard_tile
 msgid "Dashboard Tile"
-msgstr "Indicateur de tableau de bord"
+msgstr "Tablero"
 
 #. module: web_dashboard_tile
 #: model:ir.ui.view,arch_db:web_dashboard_tile.dashboard_tile_tile_form_view
 #: model:ir.ui.view,arch_db:web_dashboard_tile.dashboard_tile_tile_tree_view
 msgid "Dashboard tiles"
-msgstr "Indicateurs de tableau de bord"
+msgstr "Piezas del tablero"
 
 #. module: web_dashboard_tile
 #: model:ir.ui.view,arch_db:web_dashboard_tile.dashboard_tile_tile_form_view
 msgid "Display"
-msgstr ""
+msgstr "Pantalla"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre Mostrado"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_domain
 msgid "Domain"
-msgstr "Domaine"
+msgstr "Dominio"
 
 #. module: web_dashboard_tile
 #. openerp-web
 #: code:addons/web_dashboard_tile/static/src/js/custom_js.js:56
 #, python-format
 msgid "Error"
-msgstr "Erreur"
+msgstr "Error"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_error
 msgid "Error Details"
-msgstr ""
+msgstr "Detalles del Error"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_primary_field_id
 msgid "Field"
-msgstr "Champ"
+msgstr "Campo"
 
 #. module: web_dashboard_tile
 #. openerp-web
 #: code:addons/web_dashboard_tile/static/src/js/custom_js.js:56
 #, python-format
 msgid "Filter name is required."
-msgstr "Le nom du filtre est requis."
+msgstr "El nombre del filtro es obligatorio."
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_font_color
 msgid "Font color"
-msgstr ""
+msgstr "Color de Fuente"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_primary_format
 msgid "Format"
-msgstr ""
+msgstr "Formato"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_primary_function
 msgid "Function"
-msgstr "Fonction"
+msgstr "Función"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_group_ids
 #: model:ir.ui.view,arch_db:web_dashboard_tile.dashboard_tile_tile_form_view
 msgid "Groups"
-msgstr ""
+msgstr "Groups"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_primary_helper
 msgid "Helper"
-msgstr ""
+msgstr "Ayudante"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,help:web_dashboard_tile.field_tile_tile_group_ids
@@ -164,58 +165,61 @@ msgid ""
 "note that it will only work for global tiles (that is, when User field is "
 "left empty)"
 msgstr ""
+"Si este campo está establecido, sólo los usuarios de este grupo pueden ver "
+"este tablero. Tenga en cuenta que sólo funcionará para los tableros globales"
+" (es decir, cuando se deja vacío el campo Usuario)"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile___last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última Modificación en"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Ultima Actualización por"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Ultima Actualización en"
 
 #. module: web_dashboard_tile
 #: model:ir.ui.view,arch_db:web_dashboard_tile.dashboard_tile_tile_form_view
 msgid "Main Value"
-msgstr ""
+msgstr "Valor Principal"
 
 #. module: web_dashboard_tile
 #: selection:tile.tile,primary_function:0
 #: selection:tile.tile,secondary_function:0
 msgid "Maximum"
-msgstr "Maximum"
+msgstr "Máximo"
 
 #. module: web_dashboard_tile
 #: code:addons/web_dashboard_tile/models/tile_tile.py:39
 #: code:addons/web_dashboard_tile/models/tile_tile.py:68
 #, python-format
 msgid "Maximum value of '%s'"
-msgstr "Valeur maximale du champ '%s'"
+msgstr "Máximo valor de '%s'"
 
 #. module: web_dashboard_tile
 #: selection:tile.tile,primary_function:0
 #: selection:tile.tile,secondary_function:0
 msgid "Median"
-msgstr "Médiane"
+msgstr "Mediana"
 
 #. module: web_dashboard_tile
 #: code:addons/web_dashboard_tile/models/tile_tile.py:51
 #: code:addons/web_dashboard_tile/models/tile_tile.py:77
 #, python-format
 msgid "Median value of '%s'"
-msgstr "Valeur médian du champ '%s'"
+msgstr "Valor Medio de  '%s'"
 
 #. module: web_dashboard_tile
 #: selection:tile.tile,primary_function:0
 #: selection:tile.tile,secondary_function:0
 msgid "Minimum"
-msgstr "Minimum"
+msgstr "Mínimo"
 
 #. module: web_dashboard_tile
 #: code:addons/web_dashboard_tile/models/tile_tile.py:35
@@ -223,29 +227,29 @@ msgstr "Minimum"
 #: code:addons/web_dashboard_tile/models/tile_tile.py:65
 #, python-format
 msgid "Minimum value of '%s'"
-msgstr "Valeur minimale du champ '%s'"
+msgstr "Valor mínimo de  '%s'"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_model_id
 msgid "Model"
-msgstr "Modèle"
+msgstr "Modelo"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_name
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #. module: web_dashboard_tile
 #: code:addons/web_dashboard_tile/models/tile_tile.py:31
 #, python-format
 msgid "Number of records"
-msgstr ""
+msgstr "Número de registros"
 
 #. module: web_dashboard_tile
 #: code:addons/web_dashboard_tile/models/tile_tile.py:243
 #, python-format
 msgid "Please select a field from the selected model."
-msgstr ""
+msgstr "Por Favor Seleccione un campo del modelo elegido."
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,help:web_dashboard_tile.field_tile_tile_primary_format
@@ -254,89 +258,92 @@ msgid ""
 "Python Format String valid with str.format()\n"
 "ie: '{:,} Kgs' will output '1,000 Kgs' if value is 1000."
 msgstr ""
+"Cadena de formato Python válida con str.format()\n"
+"ej: '{:,} Kgs' mostrará '1,000 Kgs' si el valor es 1000."
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_secondary_field_id
 msgid "Secondary Field"
-msgstr ""
+msgstr "Campo Secundario"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_secondary_format
 msgid "Secondary Format"
-msgstr ""
+msgstr "Formato Secundario"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_secondary_function
 msgid "Secondary Function"
-msgstr ""
+msgstr "Función secundaria"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_secondary_helper
 msgid "Secondary Helper"
-msgstr ""
+msgstr "Ayudante Secundario"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_secondary_value
 #: model:ir.ui.view,arch_db:web_dashboard_tile.dashboard_tile_tile_form_view
 msgid "Secondary Value"
-msgstr ""
+msgstr "Valor Secundario"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_sequence
 msgid "Sequence"
-msgstr "Séquence"
+msgstr "Secuencia"
 
 #. module: web_dashboard_tile
 #. openerp-web
 #: code:addons/web_dashboard_tile/static/src/js/custom_js.js:95
 #, python-format
 msgid "Success"
-msgstr "Succès"
+msgstr "Éxito"
 
 #. module: web_dashboard_tile
 #: selection:tile.tile,primary_function:0
 #: selection:tile.tile,secondary_function:0
 msgid "Sum"
-msgstr "Somme"
+msgstr "Suma"
 
 #. module: web_dashboard_tile
 #: model:ir.ui.view,arch_db:web_dashboard_tile.dashboard_tile_tile_form_view
 msgid "Technical Informations"
-msgstr ""
+msgstr "Información técnica"
 
 #. module: web_dashboard_tile
 #. openerp-web
 #: code:addons/web_dashboard_tile/static/src/js/custom_js.js:95
 #, python-format
 msgid "Tile is created"
-msgstr "L'indicateur a été créé"
+msgstr "El Tablero está creado"
 
 #. module: web_dashboard_tile
 #. openerp-web
 #: code:addons/web_dashboard_tile/static/src/xml/custom_xml.xml:6
 #, python-format
 msgid "Tile:"
-msgstr "Indicateur :"
+msgstr "Título"
 
 #. module: web_dashboard_tile
 #: code:addons/web_dashboard_tile/models/tile_tile.py:43
 #: code:addons/web_dashboard_tile/models/tile_tile.py:71
 #, python-format
 msgid "Total value of '%s'"
-msgstr "Somme du champ '%s'"
+msgstr "Valor  total de '%s'"
 
 #. module: web_dashboard_tile
 #: code:addons/web_dashboard_tile/models/tile_tile.py:218
 #, python-format
 msgid "Unimplemented Feature. Search on Active field disabled."
 msgstr ""
+"Característica no implementada. Buscar con campo activo deshabilitado."
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_user_id
 msgid "User"
-msgstr "Utilisateur"
+msgstr "Usuario"
 
 #. module: web_dashboard_tile
 #: model:ir.model.fields,field_description:web_dashboard_tile.field_tile_tile_primary_value
 msgid "Value"
-msgstr ""
+msgstr "Valor"
