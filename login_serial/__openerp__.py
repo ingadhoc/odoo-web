@@ -33,7 +33,7 @@
         'views/res_partner_view.xml',
         'views/webclient_templates.xml',
     ],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
     'application': False,
 }
