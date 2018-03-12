@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
 from datetime import datetime
 
-from openerp import exceptions
-from openerp.addons.product.product import check_ean
-from openerp.addons.login_serial.res_users import generate_serial_id
-from openerp.tests.common import TransactionCase
+from odoo import exceptions
+from odoo.addons.product.product import check_ean
+from odoo.addons.login_serial.res_users import generate_serial_id
+from odoo.tests.common import TransactionCase
 
 
 class TestSerialLogin(TransactionCase):

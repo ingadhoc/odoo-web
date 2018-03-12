@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
-# For copyright and license notices, see __openerp__.py file in module root
+# For copyright and license notices, see __manifest__.py file in module root
 # directory
 ##############################################################################
 
@@ -9,11 +8,11 @@ import logging
 import werkzeug.utils
 import werkzeug.wrappers
 
-import openerp
-from openerp import http
-# from openerp import http, exceptions
-from openerp.http import request
-from openerp.tools.translate import _
+import odoo
+from odoo import http
+# from odoo import http, exceptions
+from odoo.http import request
+from odoo.tools.translate import _
 
 _logger = logging.getLogger(__name__)
 
@@ -57,7 +56,7 @@ class Home(http.Controller):
             return http.redirect_with_hash(redirect)
 
         if not request.uid:
-            request.uid = openerp.SUPERUSER_ID
+            request.uid = odoo.SUPERUSER_ID
 
         values = request.params.copy()
         if not redirect:
@@ -66,7 +65,7 @@ class Home(http.Controller):
 
         try:
             values['databases'] = http.db_list()
-        except openerp.exceptions.AccessDenied:
+        except odoo.exceptions.AccessDenied:
             values['databases'] = None
 
         if request.httprequest.method == 'POST':
@@ -75,7 +74,7 @@ class Home(http.Controller):
             serial_id = request.params['serial_id']
             partner_obj = request.registry.get('res.partner')
             user_vals = partner_obj.search_read(
-                request.cr, openerp.SUPERUSER_ID,
+                request.cr, odoo.SUPERUSER_ID,
                 [('serial_id', '=', serial_id)],
                 ['id', 'login']
             )
